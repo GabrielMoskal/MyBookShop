@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Witam na stronie głównej</h1>
-    <a href="<c:url value="/register" />"> Zarejestruj</a> |
-    <a href="<c:url value="/login" />"> Zaloguj</a>
+    <a href="<c:url value="/users/register" />"> Zarejestruj</a> |
+    <a href="<c:url value="/users/login" />"> Zaloguj</a>
 </body>
 </html>
