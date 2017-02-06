@@ -13,23 +13,22 @@ public class User {
     private Long id;
 
     @NotNull
-    @Size(min = 4, max = 15)
+    @Size(min = 4, max = 15, message = "{username.size}")
     private String username;
     @NotNull
-    @Size(min=5, max=25)
+    @Size(min=5, max=25, message = "{password.size}")
     private String password;
     @NotNull
     @Size(min=5, max=25)
     private String confirmedPassword;
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min=2, max=30, message = "{firstName.size}")
     private String firstName;
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min=2, max=30, message = "{lastName.size}")
     private String lastName;
 
     public User() {
-
     }
 
     public User(String username, String password, String confirmedPassword,
@@ -48,13 +47,28 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object that) {
-        return EqualsBuilder.reflectionEquals(this, that, "firstName", "lastName", "username", "password", "confirmedPassword");
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (confirmedPassword != null ? !confirmedPassword.equals(user.confirmedPassword) : user.confirmedPassword != null)
+            return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
     }
 
     @Override
     public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this, "firstName", "lastName", "username", "password", "confirmedPassword");
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (confirmedPassword != null ? confirmedPassword.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        return result;
     }
 
     public String getUsername() {

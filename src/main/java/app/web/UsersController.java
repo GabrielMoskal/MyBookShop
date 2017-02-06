@@ -2,10 +2,12 @@ package app.web;
 
 import app.User;
 import app.data.UsersRepository;
+import app.web.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,27 +31,31 @@ public class UsersController {
     }
 
     @RequestMapping(value="/register", method= GET)
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "registerForm";
     }
 
     @RequestMapping(value="/register", method=RequestMethod.POST)
-    public String processRegistration(@Valid User user, Errors errors) {
+    public String processRegistration(@Valid @ModelAttribute User user,
+                                      Errors errors,
+                                      Model model) {
         if (errors.hasErrors()) {
             return "registerForm";
         }
         userRepository.save(user);
-        return "redirect:/users/" + user.getUsername();
+        String username = user.getUsername();
+        model.addAttribute("username", username);
+        return "redirect:/users/{username}";
     }
 
     @RequestMapping(value="/{username}", method=GET)
     public String showUserProfile(@PathVariable String username, Model model) {
         User user = userRepository.findByUsername(username);
-        /* should I check if null?
         if (user == null) {
-            return "home";
+            throw new UserNotFoundException();
         }
-        */
         model.addAttribute(user);
         return "profile";
     }

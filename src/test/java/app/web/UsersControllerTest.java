@@ -1,7 +1,6 @@
 package app.web;
 
 import app.User;
-import app.data.MyUsersRepository;
 import app.data.UsersRepository;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,7 +21,8 @@ public class UsersControllerTest {
         UsersRepository userRepository = mock(UsersRepository.class);
         UsersController usersController = new UsersController(userRepository);
         MockMvc mockMvc = standaloneSetup(usersController).build();
-        mockMvc.perform(get("/users/register")).andExpect(view().name("registerForm"));
+        mockMvc.perform(get("/users/register"))
+                .andExpect(view().name("registerForm"));
     }
 
     @Test
