@@ -9,27 +9,36 @@
 <body>
     <h2><s:message code="registration.title" /></h2>
     <sf:form method="POST" commandName="user" >
+        <table>
+            <tr>
+                <td><s:message code="registration.username" /></td>
+                <td><sf:input path="username" /></td>
+                <td><sf:errors path="username" /></td>
+            </tr>
+            <tr>
+                <td><s:message code="registration.password" /></td>
+                <td><sf:password path="password" /></td>
+                <td><sf:errors path="password" /></td>
+            </tr>
+            <tr>
+                <td><s:message code="registration.confirmedPassword" /></td>
+                <td><sf:password path="confirmedPassword" /></td>
+            </tr>
+            <tr>
+                <td><s:message code="registration.firstName" /></td>
+                <td><sf:input path="firstName" /></td>
+                <td><sf:errors path="firstName" /></td>
+            </tr>
+            <tr>
+                <td><s:message code="registration.lastName" /></td>
+                <td><sf:input path="lastName" /></td>
+                <td><sf:errors path="lastName" /> <br/></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="<s:message code="registration.register" />" /></td>
+            </tr>
+        </table>
 
-        <s:message code="registration.username" />
-        <sf:input path="username" />
-        <sf:errors path="username" /> <br/>
-
-        <s:message code="registration.password" />
-        <sf:password path="password" />
-        <sf:errors path="password" /> <br/>
-
-        <s:message code="registration.confirmedPassword" />
-        <sf:password path="confirmedPassword" /> <br/>
-
-        <s:message code="registration.firstName" />
-        <sf:input path="firstName" />
-        <sf:errors path="firstName" /> <br/>
-
-        <s:message code="registration.lastName" />
-        <sf:input path="lastName" />
-        <sf:errors path="lastName" /> <br/>
-
-        <input type="submit" value="<s:message code="registration.register" />" />
     </sf:form>
 </body>
 </html>
