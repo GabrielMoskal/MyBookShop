@@ -38,7 +38,6 @@
                 <td><input type="submit" value="<s:message code="registration.register" />" /></td>
             </tr>
         </table>
-
     </sf:form>
 </body>
 </html>

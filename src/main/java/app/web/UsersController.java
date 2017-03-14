@@ -59,4 +59,9 @@ public class UsersController {
         model.addAttribute(user);
         return "profile";
     }
+
+    @RequestMapping(value="/login", method=GET)
+    public String showLoginPage() {
+        return "login";
+    }
 }

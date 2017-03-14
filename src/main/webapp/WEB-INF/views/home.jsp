@@ -12,7 +12,7 @@
     <s:url value="/users/register" var="registerUrl" />
     <a href="${registerUrl}"> <s:message code="registration.register" /></a> |
     <s:url value="/users/login" var="loginUrl" />
-    <a href="<c:url value="${loginUrl}" />"><s:message code="myapp.login" /></a>
+    <a href="${loginUrl}" ><s:message code="myapp.login" /></a>
     <br><br>
     <s:message code="test.myTest" />
 </body>
