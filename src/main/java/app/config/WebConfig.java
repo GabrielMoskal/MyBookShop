@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan("app.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
+    private static final String ROOT_PROPERTIES_BASENAME = "WEB-INF/classes/";
 
     @Bean
     public ViewResolver viewResolver() {
@@ -32,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean(name ="messageSource")
     public MessageSource getMessageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("WEB-INF/classes/messages");
+        messageSource.setBasenames(ROOT_PROPERTIES_BASENAME + "messages", ROOT_PROPERTIES_BASENAME + "foo");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

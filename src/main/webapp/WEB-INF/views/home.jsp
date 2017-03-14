@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" session="false" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
-<%@ page session="false" %>
 
 <html>
 <head>
@@ -10,7 +9,11 @@
 </head>
 <body>
     <h1><s:message code="myapp.welcome" /></h1>
-    <a href="<c:url value="/users/register" />"> Zarejestruj</a> |
-    <a href="<c:url value="/users/login" />"> Zaloguj</a>
+    <s:url value="/users/register" var="registerUrl" />
+    <a href="${registerUrl}"> <s:message code="registration.register" /></a> |
+    <s:url value="/users/login" var="loginUrl" />
+    <a href="<c:url value="${loginUrl}" />"><s:message code="myapp.login" /></a>
+    <br><br>
+    <s:message code="test.myTest" />
 </body>
 </html>

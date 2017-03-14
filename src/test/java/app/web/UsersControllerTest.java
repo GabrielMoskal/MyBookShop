@@ -70,5 +70,4 @@ public class UsersControllerTest {
         mockMvc.perform(get("/users/michael1234"))
                 .andExpect(view().name("profile"));
     }
-
 }
