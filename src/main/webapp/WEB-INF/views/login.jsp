@@ -20,6 +20,11 @@
             <td><input type="password" name="password" /></td>
         </tr>
         <tr>
+            <td><input id="remember_me" name="remember-me" type="checkbox" /></td>
+            <td><s:message code="logging.rememberMe" /></td>
+        </tr>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <tr>
             <td><input type="submit" value="<s:message code="myapp.login" />" /></td>
         </tr>
     </table>
