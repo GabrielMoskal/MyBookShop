@@ -35,6 +35,11 @@
                 <td><sf:errors path="lastName" /> <br/></td>
             </tr>
             <tr>
+                <td><s:message code="registration.email" /></td>
+                <td><sf:input path="email"></sf:input></td>
+                <td><sf:errors path="email" /></td>
+            </tr>
+            <tr>
                 <td><input type="submit" value="<s:message code="registration.register" />" /></td>
             </tr>
         </table>

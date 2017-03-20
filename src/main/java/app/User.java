@@ -28,23 +28,27 @@ public class User {
     @NotNull
     @Size(min=2, max=30, message = "{lastName.size}")
     private String lastName;
+    @NotNull
+    @Email(message = "{email.valid}")
+    private String email;
 
     public User() {
     }
 
     public User(String username, String password, String confirmedPassword,
-                String firstName, String lastName) {
-        this(null, username, password, confirmedPassword, firstName, lastName);
+                String firstName, String lastName, String email) {
+        this(null, username, password, confirmedPassword, firstName, lastName, email);
     }
 
     public User(Long id, String username, String password, String confirmedPassword,
-                String firstName, String lastName) {
+                String firstName, String lastName, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.confirmedPassword = confirmedPassword;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
     }
 
     @Override
@@ -59,7 +63,8 @@ public class User {
         if (confirmedPassword != null ? !confirmedPassword.equals(user.confirmedPassword) : user.confirmedPassword != null)
             return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        return email != null ? email.equals(user.email) : user.email == null;
     }
 
     @Override
@@ -69,6 +74,7 @@ public class User {
         result = 31 * result + (confirmedPassword != null ? confirmedPassword.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 
@@ -110,5 +116,21 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

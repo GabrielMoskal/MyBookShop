@@ -28,8 +28,10 @@ public class UsersControllerTest {
     @Test
     public void testProcessRegistration() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        User unsaved = new User("michael1234", "testPass", "testPass", "Michael","Jordan");
-        User saved = new User(55L,"michael1234", "testPass", "testPass", "Michael","Jordan");
+        User unsaved = new User("michael1234", "testPass", "testPass",
+                "Michael","Jordan", "michael@jordan.com");
+        User saved = new User(55L,"michael1234", "testPass", "testPass",
+                "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.save(unsaved)).thenReturn(saved);
 
         UsersController usersController = new UsersController(usersRepository);
@@ -39,7 +41,8 @@ public class UsersControllerTest {
                 .param("password", "testPass")
                 .param("confirmedPassword", "testPass")
                 .param("firstName", "Michael")
-                .param("lastName", "Jordan"))
+                .param("lastName", "Jordan")
+                .param("email", "michael@jordan.com"))
                 .andExpect(redirectedUrl("/users/michael1234"));
         verify(usersRepository, atLeastOnce()).save(unsaved);
     }
@@ -53,15 +56,16 @@ public class UsersControllerTest {
         mockMvc.perform(post("/users/register"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("registerForm"))
-                .andExpect(model().errorCount(5))
+                .andExpect(model().errorCount(6))
                 .andExpect(model().attributeHasFieldErrors(
-                        "user", "firstName", "lastName", "username", "password", "confirmedPassword"));
+                        "user", "firstName", "lastName", "username", "password", "confirmedPassword", "email"));
     }
 
     @Test
     public void testShowUserProfile() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        User saved = new User(55L,"michael1234", "testPass", "testPass", "Michael","Jordan");
+        User saved = new User(55L,"michael1234", "testPass",
+                "testPass", "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.findByUsername("michael1234")).thenReturn(saved);
 
         UsersController usersController = new UsersController(usersRepository);
