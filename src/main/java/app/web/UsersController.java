@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by Gabriel on 02.02.2017.
@@ -37,7 +38,7 @@ public class UsersController {
         return "registerForm";
     }
 
-    @RequestMapping(value="/register", method=RequestMethod.POST)
+    @RequestMapping(value="/register", method= POST)
     public String processRegistration(@Valid @ModelAttribute User user,
                                       Errors errors,
                                       Model model) {
