@@ -38,7 +38,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .key("rememberKey")
                 .and()
                 .httpBasic()
-                    .realmName("MyWebApp");
+                    .realmName("MyWebApp")
+                .and()
+                .requiresChannel()
+                    .antMatchers("/users/login").requiresSecure()
+                    .antMatchers("/users/register").requiresSecure()
+                    .antMatchers("/").requiresInsecure();
     }
 
     @Override
