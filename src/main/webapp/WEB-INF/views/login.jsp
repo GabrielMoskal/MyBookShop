@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="POST" action="login">
+<form method="POST" action="login" accept-charset="UTF-8">
     <h2><s:message code="logging.title" /></h2>
     <table>
         <tr>

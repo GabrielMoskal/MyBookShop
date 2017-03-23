@@ -13,7 +13,7 @@
     <security:authorize access="isAuthenticated()">
         <s:message code="myapp.greeting" /> <security:authentication property="principal.username" />!
     </security:authorize>
-
+    <br>
     <s:url value="/users/register" var="registerUrl" />
     <a href="${registerUrl}"> <s:message code="registration.register" /></a> |
     <s:url value="/users/login" var="loginUrl" />

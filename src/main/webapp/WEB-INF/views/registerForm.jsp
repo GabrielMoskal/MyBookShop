@@ -1,6 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <html>
 <head>
@@ -8,7 +7,7 @@
 </head>
 <body>
     <h2><s:message code="registration.title" /></h2>
-    <sf:form method="POST" commandName="user" >
+    <sf:form method="POST" commandName="user" acceptCharset="UTF-8">
         <table>
             <tr>
                 <td><s:message code="registration.username" /></td>
