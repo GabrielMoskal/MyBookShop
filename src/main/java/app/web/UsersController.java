@@ -65,13 +65,4 @@ public class UsersController {
     public String showLoginPage() {
         return "login";
     }
-
-    @Autowired
-    UsersRepository usersRepository;
-
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public String test() {
-        usersRepository.findByUsername("user");
-        return "home";
-    }
 }

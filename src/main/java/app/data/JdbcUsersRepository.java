@@ -14,7 +14,6 @@ import java.util.Map;
 @Repository
 public class JdbcUsersRepository implements UsersRepository {
 
-
     private NamedParameterJdbcOperations jdbcOperations;
 
     @Autowired
@@ -23,36 +22,39 @@ public class JdbcUsersRepository implements UsersRepository {
     }
 
     public User add(User user) {
-        final String INSERT_USER = "INSERT INTO users " +
-                "(username, password) " +
-                "VALUES (:username, :password);";
-
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("username", user.getUsername());
-        parameters.put("password", user.getPassword());
-        jdbcOperations.update(INSERT_USER, parameters);
-
-        final String INSERT_USER_DETAILS = "INSERT INTO user_details " +
-                "(username, firstName, lastName, email)" +
-                "VALUES (:username, :firstName, :lastName, :email);";
-
-        parameters = new HashMap<>();
-        parameters.put("username", user.getUsername());
-        parameters.put("firstName", user.getFirstName());
-        parameters.put("lastName", user.getLastName());
-        parameters.put("email", user.getEmail());
-        jdbcOperations.update(INSERT_USER_DETAILS, parameters);
-
+        insertIntoUsers(user.getUsername(), user.getPassword(), true);
+        insertIntoUserDetails(user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail());
         return user;
     }
 
     private void insertIntoUsers(String username, String password, boolean enabled) {
+        final String INSERT_USER = "INSERT INTO users " +
+                "(username, password, enabled) " +
+                "VALUES (:username, :password, :enabled);";
 
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("username", username);
+        parameters.put("password", password);
+        parameters.put("enabled", enabled);
+        jdbcOperations.update(INSERT_USER, parameters);
+    }
+
+    private void insertIntoUserDetails(String username, String firstName, String lastName, String email) {
+        final String INSERT_USER_DETAILS = "INSERT INTO user_details " +
+                "(username, firstName, lastName, email)" +
+                "VALUES (:username, :firstName, :lastName, :email);";
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("username", username);
+        parameters.put("firstName", firstName);
+        parameters.put("lastName", lastName);
+        parameters.put("email", email);
+        jdbcOperations.update(INSERT_USER_DETAILS, parameters);
     }
 
     public User findByUsername(String username) {
-        final String FIND_USER = "SELECT * FROM USERS " +
-                "WHERE username = ?;";
+        final String FIND_USER = "SELECT * FROM users " +
+                "WHERE username = :username;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("username", username);
         return jdbcOperations.queryForObject(
@@ -61,7 +63,6 @@ public class JdbcUsersRepository implements UsersRepository {
                 (resultSet, rowNum) -> {
                     User user = new User();
                     user.setUsername(resultSet.getString("username"));
-                    System.out.println(user.getUsername());
                     return user;
                 });
     }

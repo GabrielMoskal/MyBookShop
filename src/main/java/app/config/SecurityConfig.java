@@ -48,9 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .realmName("MyWebApp")
                 .and()
                 .requiresChannel()
-                    .antMatchers("/users/login").requiresSecure()
-                    .antMatchers("/users/register").requiresSecure()
-                    .antMatchers("/").requiresInsecure();
+                    .anyRequest().requiresSecure();
+                    //.antMatchers("/users/login").requiresSecure()
+                    //.antMatchers("/users/register").requiresSecure();
+                    //.antMatchers("/").requiresInsecure() breaks csrf protection;
     }
 
     @Override
