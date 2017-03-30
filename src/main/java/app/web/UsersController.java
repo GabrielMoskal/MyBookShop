@@ -45,7 +45,7 @@ public class UsersController {
         if (errors.hasErrors()) {
             return "registerForm";
         }
-        userRepository.save(user);
+        userRepository.add(user);
         String username = user.getUsername();
         model.addAttribute("username", username);
         return "redirect:/users/{username}";
@@ -64,5 +64,14 @@ public class UsersController {
     @RequestMapping(value="/login", method=GET)
     public String showLoginPage() {
         return "login";
+    }
+
+    @Autowired
+    UsersRepository usersRepository;
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String test() {
+        usersRepository.findByUsername("user");
+        return "home";
     }
 }

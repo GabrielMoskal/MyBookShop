@@ -93,19 +93,19 @@
       <DataType>varchar(15)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="32" parent="15" name="fisrtName">
-      <Position>2</Position>
-      <DataType>varchar(30)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="33" parent="15" name="lastName">
+    <column id="32" parent="15" name="lastName">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="15" name="email">
+    <column id="33" parent="15" name="email">
       <Position>4</Position>
       <DataType>varchar(254)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="15" name="firstName">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <index id="35" parent="15" name="user_details_username_uindex">

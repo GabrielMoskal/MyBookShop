@@ -29,6 +29,10 @@
         </tr>
     </table>
 </form>
+<form action="test" method="POST" accept-charset="UTF-8">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="submit" value="TEST" name="test">
+</form>
 
 </body>
 </html>

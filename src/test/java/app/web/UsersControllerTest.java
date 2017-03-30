@@ -32,7 +32,7 @@ public class UsersControllerTest {
                 "Michael","Jordan", "michael@jordan.com");
         User saved = new User(55L,"michael1234", "testPass", "testPass",
                 "Michael","Jordan", "michael@jordan.com");
-        when(usersRepository.save(unsaved)).thenReturn(saved);
+        when(usersRepository.add(unsaved)).thenReturn(saved);
 
         UsersController usersController = new UsersController(usersRepository);
         MockMvc mockMvc = standaloneSetup(usersController).build();
@@ -44,7 +44,7 @@ public class UsersControllerTest {
                 .param("lastName", "Jordan")
                 .param("email", "michael@jordan.com"))
                 .andExpect(redirectedUrl("/users/michael1234"));
-        verify(usersRepository, atLeastOnce()).save(unsaved);
+        verify(usersRepository, atLeastOnce()).add(unsaved);
     }
 
     @Test

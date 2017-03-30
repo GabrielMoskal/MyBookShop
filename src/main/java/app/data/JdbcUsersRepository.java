@@ -13,30 +13,56 @@ import java.util.Map;
  */
 @Repository
 public class JdbcUsersRepository implements UsersRepository {
-    private static final String INSERT_USER = "INSERT INTO users " +
-            "(username, password, firstName, lastName, email) " +
-            "VALUES (:username, :password, :firstName, :lastName, :email);";
 
-    NamedParameterJdbcOperations jdbcOperations;
+
+    private NamedParameterJdbcOperations jdbcOperations;
 
     @Autowired
     public JdbcUsersRepository(NamedParameterJdbcOperations jdbcOperations) {
         this.jdbcOperations = jdbcOperations;
     }
 
-    public User save(User user) {
+    public User add(User user) {
+        final String INSERT_USER = "INSERT INTO users " +
+                "(username, password) " +
+                "VALUES (:username, :password);";
+
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("username", user.getUsername());
         parameters.put("password", user.getPassword());
+        jdbcOperations.update(INSERT_USER, parameters);
+
+        final String INSERT_USER_DETAILS = "INSERT INTO user_details " +
+                "(username, firstName, lastName, email)" +
+                "VALUES (:username, :firstName, :lastName, :email);";
+
+        parameters = new HashMap<>();
+        parameters.put("username", user.getUsername());
         parameters.put("firstName", user.getFirstName());
         parameters.put("lastName", user.getLastName());
         parameters.put("email", user.getEmail());
+        jdbcOperations.update(INSERT_USER_DETAILS, parameters);
 
-        jdbcOperations.update(INSERT_USER, parameters);
         return user;
     }
 
+    private void insertIntoUsers(String username, String password, boolean enabled) {
+
+    }
+
     public User findByUsername(String username) {
-        return null;
+        final String FIND_USER = "SELECT * FROM USERS " +
+                "WHERE username = ?;";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("username", username);
+        return jdbcOperations.queryForObject(
+                FIND_USER,
+                paramMap,
+                (resultSet, rowNum) -> {
+                    User user = new User();
+                    user.setUsername(resultSet.getString("username"));
+                    System.out.println(user.getUsername());
+                    return user;
+                });
     }
 }
