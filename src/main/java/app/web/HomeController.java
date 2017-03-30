@@ -23,8 +23,6 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String test() {
-
-        System.out.println(usersRepository.findByUsername("user"));
         return "home";
     }
 }

@@ -3,6 +3,9 @@ package app.data;
 import app.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -22,7 +25,9 @@ public class JdbcUsersRepository implements UsersRepository {
     }
 
     public User add(User user) {
-        insertIntoUsers(user.getUsername(), user.getPassword(), true);
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encryptedPassword = encoder.encode(user.getPassword());
+        insertIntoUsers(user.getUsername(), encryptedPassword, true);
         insertIntoUserDetails(user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail());
         return user;
     }
