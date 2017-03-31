@@ -18,17 +18,34 @@ import java.util.Map;
 public class JdbcUsersRepository implements UsersRepository {
 
     private NamedParameterJdbcOperations jdbcOperations;
+    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public JdbcUsersRepository(NamedParameterJdbcOperations jdbcOperations) {
-        this.jdbcOperations = jdbcOperations;
+    private enum Group {USER(1L);
+        long id;
+
+        Group(long id) {
+            this.id = id;
+        }
+
+        long getId() {
+            return this.id;
+        }
     }
 
-    public User add(User user) {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encryptedPassword = encoder.encode(user.getPassword());
-        insertIntoUsers(user.getUsername(), encryptedPassword, true);
-        insertIntoUserDetails(user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail());
+    @Autowired
+    public JdbcUsersRepository(NamedParameterJdbcOperations jdbcOperations,
+                               PasswordEncoder passwordEncoder) {
+        this.jdbcOperations = jdbcOperations;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public User register(User user) {
+        Group userGroup = Group.USER;
+        insertIntoUsers(user.getUsername(), user.getPassword(), true);
+        insertIntoUserDetails(user.getUsername(), user.getFirstName(),
+                              user.getLastName(), user.getEmail());
+        insertIntoGroupMembers(user.getUsername(), userGroup.getId());
+        insertIntoAuthorities(user.getUsername(), userGroup.name());
         return user;
     }
 
@@ -39,7 +56,7 @@ public class JdbcUsersRepository implements UsersRepository {
 
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("username", username);
-        parameters.put("password", password);
+        parameters.put("password", passwordEncoder.encode(password));
         parameters.put("enabled", enabled);
         jdbcOperations.update(INSERT_USER, parameters);
     }
@@ -48,13 +65,30 @@ public class JdbcUsersRepository implements UsersRepository {
         final String INSERT_USER_DETAILS = "INSERT INTO user_details " +
                 "(username, firstName, lastName, email)" +
                 "VALUES (:username, :firstName, :lastName, :email);";
-
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("username", username);
         parameters.put("firstName", firstName);
         parameters.put("lastName", lastName);
         parameters.put("email", email);
         jdbcOperations.update(INSERT_USER_DETAILS, parameters);
+    }
+
+    private void insertIntoGroupMembers(String username, long id) {
+        final String INSERT_GROUP_MEMBER = "INSERT INTO group_members(group_id, username)" +
+                "VALUES (:group_id, :username);";
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("group_id", id);
+        parameters.put("username", username);
+        jdbcOperations.update(INSERT_GROUP_MEMBER, parameters);
+    }
+
+    private void insertIntoAuthorities(String username, String authority) {
+        final String INSERT_AUTHORITY = "INSERT INTO authorities(username, authority)" +
+                "VALUES (:username, :authority);";
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("username", username);
+        parameters.put("authority", authority);
+        jdbcOperations.update(INSERT_AUTHORITY, parameters);
     }
 
     public User findByUsername(String username) {
