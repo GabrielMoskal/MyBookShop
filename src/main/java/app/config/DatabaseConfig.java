@@ -29,13 +29,6 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-    /*
-    @Bean
-    public JdbcOperations jdbcOperations(DataSource dataSource) {
-        return new NamedParameterJdbcTemplate(dataSource).getJdbcOperations();
-    }
-    */
-
     @Bean
     public NamedParameterJdbcOperations jdbcOperations(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);

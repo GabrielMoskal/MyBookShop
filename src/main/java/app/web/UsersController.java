@@ -45,7 +45,7 @@ public class UsersController {
         if (errors.hasErrors()) {
             return "registerForm";
         }
-        userRepository.add(user);
+        userRepository.register(user);
         String username = user.getUsername();
         model.addAttribute("username", username);
         return "redirect:/users/{username}";
