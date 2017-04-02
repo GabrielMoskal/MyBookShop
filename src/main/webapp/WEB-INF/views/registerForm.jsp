@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2><s:message code="registration.title" /></h2>
-    <sf:form method="POST" commandName="user" acceptCharset="UTF-8">
+    <sf:form method="POST" modelAttribute="user" acceptCharset="UTF-8">
         <table>
             <tr>
                 <td><s:message code="registration.username" /></td>
@@ -17,7 +17,7 @@
             <tr>
                 <td><s:message code="registration.password" /></td>
                 <td><sf:password path="password" /></td>
-                <td><sf:errors path="password" /></td>
+                <td><sf:errors path="password" /><sf:errors cssClass="user" /></td>
             </tr>
             <tr>
                 <td><s:message code="registration.confirmedPassword" /></td>
@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td><s:message code="registration.email" /></td>
-                <td><sf:input path="email"></sf:input></td>
+                <td><sf:input path="email" /></td>
                 <td><sf:errors path="email" /></td>
             </tr>
             <tr>

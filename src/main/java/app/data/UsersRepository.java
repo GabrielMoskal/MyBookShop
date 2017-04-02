@@ -1,6 +1,6 @@
 package app.data;
 
-import app.User;
+import app.web.dto.User;
 
 /**
  * Created by Gabriel on 02.02.2017.

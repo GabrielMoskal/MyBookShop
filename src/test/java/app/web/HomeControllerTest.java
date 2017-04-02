@@ -1,5 +1,6 @@
 package app.web;
 
+import app.web.controller.HomeController;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 

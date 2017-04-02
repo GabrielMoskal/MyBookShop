@@ -1,13 +1,15 @@
-package app;
+package app.web.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import app.validation.ValidPassword;
 import org.hibernate.validator.constraints.Email;
 
 /**
  * Created by Gabriel on 02.02.2017.
  */
+@ValidPassword(message = "{password.notEqual}")
 public class User {
     private Long id;
 
