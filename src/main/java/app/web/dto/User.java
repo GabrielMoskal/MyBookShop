@@ -11,7 +11,6 @@ import org.hibernate.validator.constraints.Email;
  */
 @ValidPassword(message = "{password.notEqual}")
 public class User {
-    private Long id;
 
     @NotNull
     @Size(min = 4, max = 15, message = "{username.size}")
@@ -37,18 +36,17 @@ public class User {
 
     public User(String username, String password, String confirmedPassword,
                 String firstName, String lastName, String email) {
-        this(null, username, password, confirmedPassword, firstName, lastName, email);
-    }
-
-    public User(Long id, String username, String password, String confirmedPassword,
-                String firstName, String lastName, String email) {
-        this.id = id;
         this.username = username;
         this.password = password;
         this.confirmedPassword = confirmedPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return username + " " + firstName + " " + lastName + " " + email;
     }
 
     @Override
@@ -116,14 +114,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {

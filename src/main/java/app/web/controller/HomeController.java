@@ -1,5 +1,7 @@
 package app.web.controller;
 
+import app.data.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +17,12 @@ public class HomeController {
         return "home";
     }
 
+    @Autowired
+    UsersRepository usersRepository;
+
     @RequestMapping(method = RequestMethod.POST)
     public String test() {
+        System.out.println(usersRepository.findByUsername("Tomek"));
         return "home";
     }
 }

@@ -31,7 +31,7 @@ public class UsersControllerTest {
         UsersRepository usersRepository = mock(UsersRepository.class);
         User unsaved = new User("michael1234", "testPass", "testPass",
                 "Michael","Jordan", "michael@jordan.com");
-        User saved = new User(55L,"michael1234", "testPass", "testPass",
+        User saved = new User("michael1234", "testPass", "testPass",
                 "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.register(unsaved)).thenReturn(saved);
 
@@ -67,7 +67,7 @@ public class UsersControllerTest {
     @Test
     public void testShowUserProfile() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        User saved = new User(55L,"michael1234", "testPass",
+        User saved = new User("michael1234", "testPass",
                 "testPass", "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.findByUsername("michael1234")).thenReturn(saved);
 

@@ -37,7 +37,7 @@ public class JdbcUsersRepository implements UsersRepository {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User register(User user) {
+    public User register(final User user) {
         Group userGroup = Group.USER;
         insertIntoUsers(user.getUsername(), user.getPassword(), true);
         insertIntoUserDetails(user.getUsername(), user.getFirstName(),
@@ -47,7 +47,7 @@ public class JdbcUsersRepository implements UsersRepository {
         return user;
     }
 
-    private void insertIntoUsers(String username, String password, boolean enabled) {
+    private void insertIntoUsers(final String username, final String password, boolean enabled) {
         final String INSERT_USER = "INSERT INTO users " +
                 "(username, password, enabled) " +
                 "VALUES (:username, :password, :enabled);";
@@ -59,7 +59,8 @@ public class JdbcUsersRepository implements UsersRepository {
         jdbcOperations.update(INSERT_USER, parameters);
     }
 
-    private void insertIntoUserDetails(String username, String firstName, String lastName, String email) {
+    private void insertIntoUserDetails(final String username, final String firstName,
+                                       final String lastName, final String email) {
         final String INSERT_USER_DETAILS = "INSERT INTO user_details " +
                 "(username, firstName, lastName, email)" +
                 "VALUES (:username, :firstName, :lastName, :email);";
@@ -71,7 +72,7 @@ public class JdbcUsersRepository implements UsersRepository {
         jdbcOperations.update(INSERT_USER_DETAILS, parameters);
     }
 
-    private void insertIntoGroupMembers(String username, long id) {
+    private void insertIntoGroupMembers(final String username, long id) {
         final String INSERT_GROUP_MEMBER = "INSERT INTO group_members(group_id, username)" +
                 "VALUES (:group_id, :username);";
         Map<String, Object> parameters = new HashMap<>();
@@ -80,7 +81,7 @@ public class JdbcUsersRepository implements UsersRepository {
         jdbcOperations.update(INSERT_GROUP_MEMBER, parameters);
     }
 
-    private void insertIntoAuthorities(String username, String authority) {
+    private void insertIntoAuthorities(final String username, final String authority) {
         final String INSERT_AUTHORITY = "INSERT INTO authorities(username, authority)" +
                 "VALUES (:username, :authority);";
         Map<String, Object> parameters = new HashMap<>();
@@ -89,17 +90,24 @@ public class JdbcUsersRepository implements UsersRepository {
         jdbcOperations.update(INSERT_AUTHORITY, parameters);
     }
 
-    public User findByUsername(String username) {
-        final String FIND_USER = "SELECT * FROM users " +
+    public User findByUsername(final String username) {
+        final String FIND_USER = "SELECT * FROM user_details " +
                 "WHERE username = :username;";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("username", username);
+        return queryForUser(FIND_USER, paramMap);
+    }
+
+    private User queryForUser(final String query, final Map<String, Object> paramMap) {
         return jdbcOperations.queryForObject(
-                FIND_USER,
+                query,
                 paramMap,
                 (resultSet, rowNum) -> {
                     User user = new User();
                     user.setUsername(resultSet.getString("username"));
+                    user.setFirstName(resultSet.getString("firstName"));
+                    user.setLastName(resultSet.getString("lastName"));
+                    user.setEmail(resultSet.getString("email"));
                     return user;
                 });
     }
