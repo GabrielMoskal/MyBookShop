@@ -18,6 +18,9 @@ public class Book {
     private String copying;
     private String description;
 
+    // idk, maybe need decomposition
+    private String category;
+
     private Book() {
     }
 
@@ -35,6 +38,12 @@ public class Book {
         this.printing = builder.printing;
         this.copying = builder.copying;
         this.description = builder.description;
+        this.category = builder.category;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 
     public long getIndex() {
@@ -141,6 +150,12 @@ public class Book {
         this.description = description;
     }
 
+    public String getCategory() { return category; }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -159,6 +174,7 @@ public class Book {
         if (devices != null ? !devices.equals(book.devices) : book.devices != null) return false;
         if (printing != null ? !printing.equals(book.printing) : book.printing != null) return false;
         if (copying != null ? !copying.equals(book.copying) : book.copying != null) return false;
+        if (category != null ? !category.equals(book.category) : book.category != null) return false;
         return description != null ? description.equals(book.description) : book.description == null;
     }
 
@@ -168,7 +184,7 @@ public class Book {
         result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + (translator != null ? translator.hashCode() : 0);
         result = 31 * result + (publisher != null ? publisher.hashCode() : 0);
-        result = 31 * result + (int) year;
+        result = 31 * result +  year;
         result = 31 * result + (language != null ? language.hashCode() : 0);
         result = 31 * result + (pages != null ? pages.hashCode() : 0);
         result = 31 * result + (format != null ? format.hashCode() : 0);
@@ -176,6 +192,7 @@ public class Book {
         result = 31 * result + (printing != null ? printing.hashCode() : 0);
         result = 31 * result + (copying != null ? copying.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         return result;
     }
 
@@ -193,6 +210,7 @@ public class Book {
         private String printing;
         private String copying;
         private String description;
+        private String category;
 
         public Builder index(long index) {
             this.index = index;
@@ -256,6 +274,11 @@ public class Book {
 
         public Builder description(String description) {
             this.description = description;
+            return this;
+        }
+
+        public Builder category(String category) {
+            this.category = category;
             return this;
         }
 

@@ -9,6 +9,9 @@
     <title>My Spring App</title>
 </head>
 <body>
+
+
+
     <h1><s:message code="myapp.welcome" /></h1>
     <security:authorize access="isAuthenticated()">
         <s:message code="myapp.greeting" /> <security:authentication property="principal.username" />!

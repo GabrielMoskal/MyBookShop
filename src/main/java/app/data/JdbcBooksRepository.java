@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,11 +17,20 @@ import java.util.Map;
  */
 @Repository
 public class JdbcBooksRepository implements BooksRepository {
-    @Autowired
-    @Qualifier("jdbcBooks")
+
     private NamedParameterJdbcOperations jdbcOperations;
 
+    @Autowired
+    public JdbcBooksRepository(@Qualifier("jdbcBooks") NamedParameterJdbcOperations jdbcOperations) {
+        this.jdbcOperations = jdbcOperations;
+    }
+
     public void insert(Book book) {
+        insertIntoKsiazki(book);
+        insertIntoKategorieKsiazki(book);
+    }
+
+    private void insertIntoKsiazki(Book book) {
         final String INSERT_BOOK = "INSERT INTO ksiazki (indeks, tytul, autor, wydawnictwo, rok_wydania, " +
                 "ilosc_stron, format_ksiazki, liczba_urzadzen, drukowanie, " +
                 "kopiowanie, tlumacz, jezyk_wydania, opis)" +
@@ -46,11 +56,39 @@ public class JdbcBooksRepository implements BooksRepository {
         jdbcOperations.update(INSERT_BOOK, properties);
     }
 
+    private void insertIntoKategorieKsiazki(Book book) {
+        final String INSERT_INTO_KATEGORIE = "INSERT INTO kategoria_ksiazki(indeks, kategoria) " +
+                "VALUES (:index, :category);";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("index", book.getIndex());
+        params.put("category", book.getCategory());
+
+        jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
+    }
+
     public Book findBook(int index) {
         final String SELECT_BY_ID = "SELECT * FROM ksiazki WHERE indeks = :indeks";
         Map<String, Object> params = new HashMap<>();
         params.put("indeks", index);
         return jdbcOperations.queryForObject(SELECT_BY_ID, params, this::mapBook);
+    }
+
+    public List<Book> findBooks(String category) {
+        final String SELECT_BY_CATEGORY = "SELECT * " +
+                "FROM ksiazki " +
+                "JOIN kategoria_ksiazki USING(indeks) " +
+                "JOIN kategorie USING(kategoria) " +
+                "WHERE kategoria = :category;";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("category", category);
+        return jdbcOperations.query(SELECT_BY_CATEGORY, params, this::mapBook);
+    }
+
+    public List<Map<String, Object>> findCategories() {
+        final String SELECT_FROM_CATEGORIES = "SELECT * FROM kategorie;";
+        return jdbcOperations.queryForList(SELECT_FROM_CATEGORIES, new HashMap<>());
     }
 
     private Book mapBook(ResultSet rs, int rowNum) throws SQLException {
@@ -68,6 +106,7 @@ public class JdbcBooksRepository implements BooksRepository {
                 .translator(rs.getString("tlumacz"))
                 .language(rs.getString("jezyk_wydania"))
                 .description(rs.getString("opis"))
+                .category(rs.getString("kategoria"))
                 .build();
     }
 }
