@@ -2,6 +2,7 @@ package app.data;
 
 import app.web.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -31,7 +32,7 @@ public class JdbcUsersRepository implements UsersRepository {
     }
 
     @Autowired
-    public JdbcUsersRepository(NamedParameterJdbcOperations jdbcOperations,
+    public JdbcUsersRepository(@Qualifier("jdbcUsers") NamedParameterJdbcOperations jdbcOperations,
                                PasswordEncoder passwordEncoder) {
         this.jdbcOperations = jdbcOperations;
         this.passwordEncoder = passwordEncoder;

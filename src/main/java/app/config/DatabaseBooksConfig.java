@@ -1,5 +1,6 @@
 package app.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -11,13 +12,13 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * Created by Gabriel on 20.03.2017.
+ * Created by Gabriel on 04.04.2017.
  */
 @Configuration
-public class DatabaseConfig {
-    private final String DATASOURCE_OBJECT = "java:comp/env/jdbc/MyProject";
+public class DatabaseBooksConfig {
+    private final String DATASOURCE_OBJECT = "java:comp/env/jdbc/BooksApp";
 
-    @Bean
+    @Bean(name = "dsBooks")
     public DataSource dataSource() {
         DataSource dataSource = null;
         try {
@@ -29,8 +30,8 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-    @Bean
-    public NamedParameterJdbcOperations jdbcOperations(DataSource dataSource) {
+    @Bean(name = "jdbcBooks")
+    public NamedParameterJdbcOperations jdbcOperations(@Qualifier("dsBooks") DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);
     }
 }

@@ -48,6 +48,7 @@ public class UsersControllerTest {
         verify(usersRepository, atLeastOnce()).register(unsaved);
     }
 
+    // TODO
     @Test
     public void shouldFailValidationWithNoData() throws Exception {
         /*
