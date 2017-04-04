@@ -1,0 +1,266 @@
+package app.web.dto;
+
+/**
+ * Created by Gabriel on 04.04.2017.
+ */
+public class Book {
+    private long index;
+    private String title;
+    private String author;
+    private String translator;
+    private String publisher;
+    private int year;
+    private String language;
+    private Integer pages;
+    private String format;
+    private String devices;
+    private String printing;
+    private String copying;
+    private String description;
+
+    private Book() {
+    }
+
+    private Book(Builder builder) {
+        this.index = builder.index;
+        this.title = builder.title;
+        this.author = builder.author;
+        this.translator = builder.translator;
+        this.publisher = builder.publisher;
+        this.year = builder.year;
+        this.language = builder.language;
+        this.pages = builder.pages;
+        this.format = builder.format;
+        this.devices = builder.devices;
+        this.printing = builder.printing;
+        this.copying = builder.copying;
+        this.description = builder.description;
+    }
+
+    public long getIndex() {
+        return index;
+    }
+
+    public void setIndex(long index) {
+        this.index = index;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTranslator() {
+        return translator;
+    }
+
+    public void setTranslator(String translator) {
+        this.translator = translator;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
+    public void setPages(Integer pages) {
+        this.pages = pages;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getDevices() {
+        return devices;
+    }
+
+    public void setDevices(String devices) {
+        this.devices = devices;
+    }
+
+    public String getPrinting() {
+        return printing;
+    }
+
+    public void setPrinting(String printing) {
+        this.printing = printing;
+    }
+
+    public String getCopying() {
+        return copying;
+    }
+
+    public void setCopying(String copying) {
+        this.copying = copying;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (year != book.year) return false;
+        if (title != null ? !title.equals(book.title) : book.title != null) return false;
+        if (author != null ? !author.equals(book.author) : book.author != null) return false;
+        if (translator != null ? !translator.equals(book.translator) : book.translator != null) return false;
+        if (publisher != null ? !publisher.equals(book.publisher) : book.publisher != null) return false;
+        if (language != null ? !language.equals(book.language) : book.language != null) return false;
+        if (pages != null ? !pages.equals(book.pages) : book.pages != null) return false;
+        if (format != null ? !format.equals(book.format) : book.format != null) return false;
+        if (devices != null ? !devices.equals(book.devices) : book.devices != null) return false;
+        if (printing != null ? !printing.equals(book.printing) : book.printing != null) return false;
+        if (copying != null ? !copying.equals(book.copying) : book.copying != null) return false;
+        return description != null ? description.equals(book.description) : book.description == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (translator != null ? translator.hashCode() : 0);
+        result = 31 * result + (publisher != null ? publisher.hashCode() : 0);
+        result = 31 * result + (int) year;
+        result = 31 * result + (language != null ? language.hashCode() : 0);
+        result = 31 * result + (pages != null ? pages.hashCode() : 0);
+        result = 31 * result + (format != null ? format.hashCode() : 0);
+        result = 31 * result + (devices != null ? devices.hashCode() : 0);
+        result = 31 * result + (printing != null ? printing.hashCode() : 0);
+        result = 31 * result + (copying != null ? copying.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
+
+    public static class Builder {
+        private long index;
+        private String title;
+        private String author;
+        private String translator;
+        private String publisher;
+        private int year;
+        private String language;
+        private Integer pages;
+        private String format;
+        private String devices;
+        private String printing;
+        private String copying;
+        private String description;
+
+        public Builder index(long index) {
+            this.index = index;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder author(String author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder translator(String translator) {
+            this.translator = translator;
+            return this;
+        }
+
+        public Builder publisher(String publisher) {
+            this.publisher = publisher;
+            return this;
+        }
+
+        public Builder year(int year) {
+            this.year = year;
+            return this;
+        }
+
+        public Builder language(String language) {
+            this.language = language;
+            return this;
+        }
+
+        public Builder pages(Integer pages) {
+            this.pages = pages;
+            return this;
+        }
+
+        public Builder format(String format) {
+            this.format = format;
+            return this;
+        }
+
+        public Builder devices(String devices) {
+            this.devices = devices;
+            return this;
+        }
+
+        public Builder printing(String printing) {
+            this.printing = printing;
+            return this;
+        }
+
+        public Builder copying(String copying) {
+            this.copying = copying;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Book build() {
+            return new Book(this);
+        }
+    }
+}
