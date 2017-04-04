@@ -9,7 +9,15 @@
     <title>My Spring App</title>
 </head>
 <body>
-
+    <c:forEach var="category" items="${categories}">
+        <form action="/home" method="GET" >
+            <table>
+                <tr>
+                    <td><input type="submit" value="<c:out value="${category}" />"/></td>
+                </tr>
+            </table>
+        </form>
+    </c:forEach>
 
 
     <h1><s:message code="myapp.welcome" /></h1>

@@ -67,6 +67,17 @@ public class JdbcBooksRepository implements BooksRepository {
         jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
     }
 
+    public void insertIntoCategories(String category, String url) {
+        final String INSERT_INTO_KATEGORIE = "INSERT INTO kategorie(kategoria, url)" +
+                "VALUES (:category, :url);";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("category", category);
+        params.put("url", url);
+
+        jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
+    }
+
     public Book findBook(int index) {
         final String SELECT_BY_ID = "SELECT * FROM ksiazki WHERE indeks = :indeks";
         Map<String, Object> params = new HashMap<>();

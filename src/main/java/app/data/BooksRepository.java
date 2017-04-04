@@ -11,6 +11,7 @@ import java.util.Map;
 public interface BooksRepository {
     void insert(Book book);
     Book findBook(int index);
+    void insertIntoCategories(String category, String url);
     List<Book> findBooks(String category);
     List<Map<String, Object>> findCategories();
 }
