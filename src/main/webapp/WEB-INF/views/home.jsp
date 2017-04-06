@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
     isELIgnored="false" %>
 <html>
@@ -73,6 +74,38 @@
             color: white;
         }
 
+        ul.vertical_bar h1 {
+            size: 16px;
+            color: black;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .btn_link {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            float: left;
+            outline:none;
+
+            width: 100%;
+
+            font-family:inherit;
+        }
+
+        .btn_link:hover:not(.active) {
+            background-color: #555;
+            color: white;
+            border: none;
+            outline: none;
+        }
+
         header, footer {
             padding: 1em;
             color: white;
@@ -97,8 +130,12 @@
 
     <div>
     <ul class="vertical_bar">
+        <h1>Kategorie</h1>
         <c:forEach var="category" items="${categories}" >
-            <li><a href="#home" ><c:out value="${category}" /></a></li>
+            <sf:form method="GET" modelAttribute="categories" action="category" acceptCharset="UTF-8">
+                <input type="hidden" name="categoryUrl" value="<c:out value="${category.key}"/>" />
+                <button type="submit" class="btn_link"><c:out value="${category.value}" /></button>
+            </sf:form>
         </c:forEach>
     </ul>
     </div>
