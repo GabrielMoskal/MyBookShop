@@ -26,17 +26,17 @@ public class JdbcBooksRepository implements BooksRepository {
     }
 
     public void insert(Book book) {
-        insertIntoKsiazki(book);
-        insertIntoKategorieKsiazki(book);
+        insertIntoBooks(book);
+        insertIntoBooksCategories(book);
     }
 
-    private void insertIntoKsiazki(Book book) {
-        final String INSERT_BOOK = "INSERT INTO ksiazki (indeks, tytul, autor, wydawnictwo, rok_wydania, " +
-                "ilosc_stron, format_ksiazki, liczba_urzadzen, drukowanie, " +
-                "kopiowanie, tlumacz, jezyk_wydania, opis)" +
+    private void insertIntoBooks(Book book) {
+        final String INSERT_BOOK = "INSERT INTO books (bookid, title, author, publisher, " +
+                "release_year, pages, book_format, devices, printing, " +
+                "copying, translator, book_language, description)" +
                 "VALUES (:index, :title, :author, :publisher, :year, :pages, :format, :devices, " +
                 ":printing, :copying, :translator, :language, :description)" +
-                "ON DUPLICATE KEY UPDATE indeks = :index;";
+                "ON DUPLICATE KEY UPDATE bookid = :index;";
 
         Map<String, Object> properties = new HashMap<>();
         properties.put("index", book.getIndex());
@@ -56,19 +56,19 @@ public class JdbcBooksRepository implements BooksRepository {
         jdbcOperations.update(INSERT_BOOK, properties);
     }
 
-    private void insertIntoKategorieKsiazki(Book book) {
-        final String INSERT_INTO_KATEGORIE = "INSERT INTO kategoria_ksiazki(indeks, kategoria) " +
+    private void insertIntoBooksCategories(Book book) {
+        final String INSERT_INTO_BOOK_CATEGORY = "INSERT INTO books_categories(bookid, category) " +
                 "VALUES (:index, :category);";
 
         Map<String, Object> params = new HashMap<>();
         params.put("index", book.getIndex());
         params.put("category", book.getCategory());
 
-        jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
+        jdbcOperations.update(INSERT_INTO_BOOK_CATEGORY, params);
     }
 
     public void insertIntoCategories(String category, String url) {
-        final String INSERT_INTO_KATEGORIE = "INSERT INTO kategorie(kategoria, url)" +
+        final String INSERT_INTO_KATEGORIE = "INSERT INTO categories(category, url)" +
                 "VALUES (:category, :url);";
 
         Map<String, Object> params = new HashMap<>();
@@ -79,18 +79,18 @@ public class JdbcBooksRepository implements BooksRepository {
     }
 
     public Book findBook(int index) {
-        final String SELECT_BY_ID = "SELECT * FROM ksiazki WHERE indeks = :indeks";
+        final String SELECT_BY_ID = "SELECT * FROM books WHERE bookid = :index";
         Map<String, Object> params = new HashMap<>();
-        params.put("indeks", index);
+        params.put("index", index);
         return jdbcOperations.queryForObject(SELECT_BY_ID, params, this::mapBook);
     }
 
     public List<Book> findBooks(String category) {
         final String SELECT_BY_CATEGORY = "SELECT * " +
-                "FROM ksiazki " +
-                "JOIN kategoria_ksiazki USING(indeks) " +
-                "JOIN kategorie USING(kategoria) " +
-                "WHERE kategoria = :category;";
+                "FROM books " +
+                "JOIN books_categories USING(bookid) " +
+                "JOIN categories USING(category) " +
+                "WHERE category = :category;";
 
         Map<String, Object> params = new HashMap<>();
         params.put("category", category);
@@ -98,26 +98,26 @@ public class JdbcBooksRepository implements BooksRepository {
     }
 
     public List<Map<String, Object>> findCategories() {
-        final String SELECT_FROM_CATEGORIES = "SELECT * FROM kategorie;";
+        final String SELECT_FROM_CATEGORIES = "SELECT * FROM categories;";
         return jdbcOperations.queryForList(SELECT_FROM_CATEGORIES, new HashMap<>());
     }
 
     private Book mapBook(ResultSet rs, int rowNum) throws SQLException {
         return new Book.Builder()
-                .index(rs.getInt("indeks"))
-                .title(rs.getString("tytul"))
-                .author(rs.getString("autor"))
-                .publisher(rs.getString("wydawnictwo"))
-                .year(rs.getInt("rok_wydania"))
-                .pages(rs.getInt("ilosc_stron"))
-                .format(rs.getString("format_ksiazki"))
-                .devices(rs.getString("liczba_urzadzen"))
-                .printing(rs.getString("drukowanie"))
-                .copying(rs.getString("kopiowanie"))
-                .translator(rs.getString("tlumacz"))
-                .language(rs.getString("jezyk_wydania"))
-                .description(rs.getString("opis"))
-                .category(rs.getString("kategoria"))
+                .index(rs.getInt("bookid"))
+                .title(rs.getString("title"))
+                .author(rs.getString("author"))
+                .publisher(rs.getString("publisher"))
+                .year(rs.getInt("release_year"))
+                .pages(rs.getInt("pages"))
+                .format(rs.getString("book_format"))
+                .devices(rs.getString("devices"))
+                .printing(rs.getString("printing"))
+                .copying(rs.getString("copying"))
+                .translator(rs.getString("translator"))
+                .language(rs.getString("book_language"))
+                .description(rs.getString("description"))
+                .category(rs.getString("category"))
                 .build();
     }
 }

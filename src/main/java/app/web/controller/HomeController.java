@@ -32,9 +32,17 @@ public class HomeController {
         List<Map<String, Object>> categories = booksRepository.findCategories();
         List<String> category = new ArrayList<>();
         for (Map<String, Object> cat : categories) {
-            category.add((String)cat.get("kategoria"));
+            category.add((String)cat.get("category"));
         }
         model.addAttribute("categories", category);
+
+        List<Book> books = booksRepository.findBooks("Dom i ogród");
+        List<Book> newBooks = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            newBooks.add(books.get(i));
+        }
+        model.addAttribute("book", newBooks);
+
         return "home";
     }
 
