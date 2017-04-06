@@ -20,6 +20,7 @@ public class Book {
 
     // idk, maybe need decomposition
     private String category;
+    private String imgUrl;
 
     private Book() {
     }
@@ -39,6 +40,7 @@ public class Book {
         this.copying = builder.copying;
         this.description = builder.description;
         this.category = builder.category;
+        this.imgUrl = builder.imgUrl;
     }
 
     @Override
@@ -156,6 +158,14 @@ public class Book {
         this.category = category;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setimgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -175,6 +185,7 @@ public class Book {
         if (printing != null ? !printing.equals(book.printing) : book.printing != null) return false;
         if (copying != null ? !copying.equals(book.copying) : book.copying != null) return false;
         if (category != null ? !category.equals(book.category) : book.category != null) return false;
+        if (imgUrl != null ? !imgUrl.equals(book.imgUrl) : book.imgUrl != null) return false;
         return description != null ? description.equals(book.description) : book.description == null;
     }
 
@@ -193,6 +204,7 @@ public class Book {
         result = 31 * result + (copying != null ? copying.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
         return result;
     }
 
@@ -211,6 +223,7 @@ public class Book {
         private String copying;
         private String description;
         private String category;
+        private String imgUrl;
 
         public Builder index(long index) {
             this.index = index;
@@ -279,6 +292,11 @@ public class Book {
 
         public Builder category(String category) {
             this.category = category;
+            return this;
+        }
+
+        public Builder imgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
             return this;
         }
 

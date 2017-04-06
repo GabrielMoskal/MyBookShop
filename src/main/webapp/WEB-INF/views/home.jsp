@@ -36,7 +36,7 @@
     </form>
     <br><br>
     <s:message code="test.myTest" />
-
+    <img src="http://ecsmedia.pl/c/python-dla-dzieci-programowanie-na-wesolo-u-iext46012895.jpg" >
     <form method="POST" accept-charset="UTF-8">
         <input type="text" name="username" value="" />
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

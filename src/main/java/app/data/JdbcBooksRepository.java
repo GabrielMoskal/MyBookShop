@@ -33,9 +33,9 @@ public class JdbcBooksRepository implements BooksRepository {
     private void insertIntoBooks(Book book) {
         final String INSERT_BOOK = "INSERT INTO books (bookid, title, author, publisher, " +
                 "release_year, pages, book_format, devices, printing, " +
-                "copying, translator, book_language, description)" +
+                "copying, translator, book_language, description, image_url)" +
                 "VALUES (:index, :title, :author, :publisher, :year, :pages, :format, :devices, " +
-                ":printing, :copying, :translator, :language, :description)" +
+                ":printing, :copying, :translator, :language, :description, :image_url)" +
                 "ON DUPLICATE KEY UPDATE bookid = :index;";
 
         Map<String, Object> properties = new HashMap<>();
@@ -52,6 +52,7 @@ public class JdbcBooksRepository implements BooksRepository {
         properties.put("translator", book.getTranslator());
         properties.put("language", book.getLanguage());
         properties.put("description", book.getDescription());
+        properties.put("image_url", book.getImgUrl());
 
         jdbcOperations.update(INSERT_BOOK, properties);
     }
@@ -118,6 +119,7 @@ public class JdbcBooksRepository implements BooksRepository {
                 .language(rs.getString("book_language"))
                 .description(rs.getString("description"))
                 .category(rs.getString("category"))
+                .imgUrl(rs.getString("image_url"))
                 .build();
     }
 }
