@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,13 +69,13 @@ public class JdbcBooksRepository implements BooksRepository {
         jdbcOperations.update(INSERT_INTO_BOOK_CATEGORY, params);
     }
 
-    public void insertIntoCategories(String category, String url) {
-        final String INSERT_INTO_KATEGORIE = "INSERT INTO categories(category, url)" +
+    public void insertIntoCategories(String category, String empik_url) {
+        final String INSERT_INTO_KATEGORIE = "INSERT INTO categories(category, empik_url)" +
                 "VALUES (:category, :url);";
 
         Map<String, Object> params = new HashMap<>();
         params.put("category", category);
-        params.put("url", url);
+        params.put("empik_url", empik_url);
 
         jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
     }
@@ -98,7 +99,16 @@ public class JdbcBooksRepository implements BooksRepository {
         return jdbcOperations.query(SELECT_BY_CATEGORY, params, this::mapBook);
     }
 
-    public List<Map<String, Object>> findCategories() {
+    public List<String> retrieveCategoriesNames() {
+        List<Map<String, Object>> categories = retrieveCategories();
+        List<java.lang.String> result = new ArrayList<>();
+        for (Map<String, Object> category : categories) {
+            result.add((String)category.get("category"));
+        }
+        return result;
+    }
+
+    private List<Map<String, Object>> retrieveCategories() {
         final String SELECT_FROM_CATEGORIES = "SELECT * FROM categories;";
         return jdbcOperations.queryForList(SELECT_FROM_CATEGORIES, new HashMap<>());
     }
