@@ -39,13 +39,11 @@ public class CategoriesController {
     @RequestMapping(value = "/{categoryUrl}", method = GET)
     public String showCategory(@PathVariable String categoryUrl,
                                @RequestParam String categoryName,
-                               @RequestParam(defaultValue = "15") String booksLimit,
-                               @RequestParam(defaultValue = "0") String pageNumber,
+                               @RequestParam(value = "booksLimit", defaultValue = "15") int booksLimit,
+                               @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                Model model) {
-        System.out.println(booksLimit);
-        int limit = Integer.valueOf(booksLimit);
-        int offset = limit * Integer.valueOf(pageNumber);
-        List<Book> books = booksRepository.findBooks(categoryName, limit, offset);
+        int offset = booksLimit * pageNumber;
+        List<Book> books = booksRepository.findBooks(categoryName, booksLimit, offset);
         model.addAttribute("books", books);
         return "category";
     }
