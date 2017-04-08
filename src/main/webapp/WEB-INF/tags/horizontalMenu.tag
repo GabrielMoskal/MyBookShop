@@ -1,4 +1,4 @@
-<%@ tag language="java" pageEncoding="UTF-8" %>
+<%@ tag language="java" pageEncoding="UTF-8" isELIgnored="false" %>
 
 <style>
     ul.horizontal_bar {

@@ -18,9 +18,7 @@
 <myTag:verticalMenu />
 
 <div style="margin-left:20%;margin-top:40px;padding:1px 16px;height:1000px;">
-    <c:forEach items="${books}" var="book">
-        <c:out value="${book.author}" /> <br>
-    </c:forEach>
+    <myTag:books />
 </div>
 
 </body>

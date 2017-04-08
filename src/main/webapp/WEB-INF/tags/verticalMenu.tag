@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 
-<%@ tag language="java" pageEncoding="UTF-8" %>
+<%@ tag language="java" pageEncoding="UTF-8" isELIgnored="false" %>
 
 <style>
     ul.vertical_bar {

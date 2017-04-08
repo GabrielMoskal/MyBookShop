@@ -53,6 +53,8 @@ public class CategoriesController {
         Map<String, String> myParam = categoriesService.makeBooksCategories();
         model.addAttribute("categories", myParam);
 
+        model.addAttribute("categoryName", categoryName);
+
         return "category";
     }
 }
