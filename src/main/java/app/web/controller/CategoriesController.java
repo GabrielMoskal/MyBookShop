@@ -2,6 +2,7 @@ package app.web.controller;
 
 import app.data.BooksRepository;
 import app.web.dto.Book;
+import app.web.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -21,10 +23,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class CategoriesController {
 
     private BooksRepository booksRepository;
+    private CategoriesService categoriesService;
 
     @Autowired
-    public CategoriesController(BooksRepository booksRepository) {
+    public CategoriesController(BooksRepository booksRepository, CategoriesService categoriesService) {
         this.booksRepository = booksRepository;
+        this.categoriesService = categoriesService;
     }
 
     @RequestMapping(method = GET)
@@ -45,6 +49,10 @@ public class CategoriesController {
         int offset = booksLimit * pageNumber;
         List<Book> books = booksRepository.findBooks(categoryName, booksLimit, offset);
         model.addAttribute("books", books);
+
+        Map<String, String> myParam = categoriesService.makeBooksCategories();
+        model.addAttribute("categories", myParam);
+
         return "category";
     }
 }
