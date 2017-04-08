@@ -87,15 +87,19 @@ public class JdbcBooksRepository implements BooksRepository {
         return jdbcOperations.queryForObject(SELECT_BY_ID, params, this::mapBook);
     }
 
-    public List<Book> findBooks(String category) {
+    public List<Book> findBooks(String booksCategory, int booksLimit, int booksOffset) {
         final String SELECT_BY_CATEGORY = "SELECT * " +
                 "FROM books " +
                 "JOIN books_categories USING(bookid) " +
                 "JOIN categories USING(category) " +
-                "WHERE category = :category;";
+                "WHERE category = :category " +
+                "LIMIT :booksLimit " +
+                "OFFSET :booksOffset;";
 
         Map<String, Object> params = new HashMap<>();
-        params.put("category", category);
+        params.put("category", booksCategory);
+        params.put("booksLimit", booksLimit);
+        params.put("booksOffset", booksOffset);
         return jdbcOperations.query(SELECT_BY_CATEGORY, params, this::mapBook);
     }
 

@@ -134,6 +134,7 @@
         <c:forEach var="category" items="${categories}" >
             <sf:form method="GET" modelAttribute="categories" action="category" acceptCharset="UTF-8">
                 <input type="hidden" name="categoryUrl" value="<c:out value="${category.key}"/>" />
+                <input type="hidden" name="categoryName" value="<c:out value="${category.value}"/>" />
                 <button type="submit" class="btn_link"><c:out value="${category.value}" /></button>
             </sf:form>
         </c:forEach>
@@ -141,6 +142,7 @@
     </div>
 
     <div style="margin-left:20%;margin-top:40px;padding:1px 16px;height:1000px;">
+        <a href="category/komiks">Go TO KOMIKS</a>
         <h2>Fixed Full-height Side Nav</h2>
         <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
         <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>

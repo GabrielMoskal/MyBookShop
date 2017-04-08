@@ -8,7 +8,7 @@
 <body>
 
 <c:forEach items="${books}" var="book">
-    <c:out value="${book.author}" />
+    <c:out value="${book.author}" /> <br>
 </c:forEach>
 
 </body>
