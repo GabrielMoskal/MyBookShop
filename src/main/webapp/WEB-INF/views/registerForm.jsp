@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title><s:message code="registration.title" /></title>
