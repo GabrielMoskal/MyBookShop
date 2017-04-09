@@ -21,7 +21,7 @@
 <c:forEach var="book" items="${books}" >
     <div class="floating-box" >
         <img src="<c:out value="${book.imgUrl}" />" style="width:140px;height:220px;" >
-        <p><c:out value="${book.title}" /></p>
+        <a href="<c:url value="/book/${book.index}" />"><p><c:out value="${book.title}" /></p></a>
     </div>
 </c:forEach>
 

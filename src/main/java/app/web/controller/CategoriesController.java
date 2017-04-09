@@ -1,6 +1,5 @@
 package app.web.controller;
 
-import app.data.BooksRepository;
 import app.web.dto.Book;
 import app.web.dto.NavigationButton;
 import app.web.service.BooksService;

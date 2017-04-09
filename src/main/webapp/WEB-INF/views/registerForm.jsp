@@ -1,11 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
 <html>
 <head>
     <title><s:message code="registration.title" /></title>
+    <style>
+        input {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: 2px green;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+<myTag:horizontalMenu />
+
     <h2><s:message code="registration.title" /></h2>
     <sf:form method="POST" modelAttribute="user" acceptCharset="UTF-8">
         <table>

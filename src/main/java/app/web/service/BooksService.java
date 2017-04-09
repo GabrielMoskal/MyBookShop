@@ -21,7 +21,7 @@ public class BooksService {
     }
 
     public List<Book> retrieveBooks(String categoryName, int booksLimit, int offset) {
-        return booksRepository.findBooks(categoryName, booksLimit, offset);
+        return booksRepository.retrieveBooks(categoryName, booksLimit, offset);
     }
 
     public int findNumberOfPagesByCategory(String category, int booksLimitPerPage) {

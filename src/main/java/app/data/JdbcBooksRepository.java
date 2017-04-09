@@ -26,68 +26,16 @@ public class JdbcBooksRepository implements BooksRepository {
         this.jdbcOperations = jdbcOperations;
     }
 
-    public void insert(Book book) {
-        insertIntoBooks(book);
-        insertIntoBooksCategories(book);
-    }
-
-    private void insertIntoBooks(Book book) {
-        final String INSERT_BOOK = "INSERT INTO books (bookid, title, author, publisher, " +
-                "release_year, pages, book_format, devices, printing, " +
-                "copying, translator, book_language, description, image_url)" +
-                "VALUES (:index, :title, :author, :publisher, :year, :pages, :format, :devices, " +
-                ":printing, :copying, :translator, :language, :description, :image_url)" +
-                "ON DUPLICATE KEY UPDATE bookid = :index;";
-
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("index", book.getIndex());
-        properties.put("title", book.getTitle());
-        properties.put("author", book.getAuthor());
-        properties.put("publisher", book.getPublisher());
-        properties.put("year", book.getYear());
-        properties.put("pages", book.getPages());
-        properties.put("format", book.getFormat());
-        properties.put("devices", book.getDevices());
-        properties.put("printing", book.getPrinting());
-        properties.put("copying", book.getCopying());
-        properties.put("translator", book.getTranslator());
-        properties.put("language", book.getLanguage());
-        properties.put("description", book.getDescription());
-        properties.put("image_url", book.getImgUrl());
-
-        jdbcOperations.update(INSERT_BOOK, properties);
-    }
-
-    private void insertIntoBooksCategories(Book book) {
-        final String INSERT_INTO_BOOK_CATEGORY = "INSERT INTO books_categories(bookid, category) " +
-                "VALUES (:index, :category);";
-
-        Map<String, Object> params = new HashMap<>();
-        params.put("index", book.getIndex());
-        params.put("category", book.getCategory());
-
-        jdbcOperations.update(INSERT_INTO_BOOK_CATEGORY, params);
-    }
-
-    public void insertIntoCategories(String category, String empik_url) {
-        final String INSERT_INTO_KATEGORIE = "INSERT INTO categories(category, empik_url)" +
-                "VALUES (:category, :url);";
-
-        Map<String, Object> params = new HashMap<>();
-        params.put("category", category);
-        params.put("empik_url", empik_url);
-
-        jdbcOperations.update(INSERT_INTO_KATEGORIE, params);
-    }
-
-    public Book findBook(int index) {
-        final String SELECT_BY_ID = "SELECT * FROM books WHERE bookid = :index";
+    public Book retrieveBook(int index) {
+        final String SELECT_BY_ID = "SELECT * FROM books " +
+                "NATURAL JOIN books_categories " +
+                "WHERE bookid = :index";
         Map<String, Object> params = new HashMap<>();
         params.put("index", index);
         return jdbcOperations.queryForObject(SELECT_BY_ID, params, this::mapBook);
     }
 
-    public List<Book> findBooks(String booksCategory, int booksLimit, int booksOffset) {
+    public List<Book> retrieveBooks(String booksCategory, int booksLimit, int booksOffset) {
         final String SELECT_BY_CATEGORY = "SELECT * " +
                 "FROM books " +
                 "JOIN books_categories USING(bookid) " +
@@ -101,20 +49,6 @@ public class JdbcBooksRepository implements BooksRepository {
         params.put("booksLimit", booksLimit);
         params.put("booksOffset", booksOffset);
         return jdbcOperations.query(SELECT_BY_CATEGORY, params, this::mapBook);
-    }
-
-    public List<String> retrieveCategoriesNames() {
-        List<Map<String, Object>> categories = retrieveCategories();
-        List<java.lang.String> result = new ArrayList<>();
-        for (Map<String, Object> category : categories) {
-            result.add((String)category.get("category"));
-        }
-        return result;
-    }
-
-    private List<Map<String, Object>> retrieveCategories() {
-        final String SELECT_FROM_CATEGORIES = "SELECT * FROM categories;";
-        return jdbcOperations.queryForList(SELECT_FROM_CATEGORIES, new HashMap<>());
     }
 
     private Book mapBook(ResultSet rs, int rowNum) throws SQLException {
@@ -135,6 +69,20 @@ public class JdbcBooksRepository implements BooksRepository {
                 .category(rs.getString("category"))
                 .imgUrl(rs.getString("image_url"))
                 .build();
+    }
+
+    public List<String> retrieveCategoriesNames() {
+        List<Map<String, Object>> categories = retrieveCategories();
+        List<java.lang.String> result = new ArrayList<>();
+        for (Map<String, Object> category : categories) {
+            result.add((String)category.get("category"));
+        }
+        return result;
+    }
+
+    private List<Map<String, Object>> retrieveCategories() {
+        final String SELECT_FROM_CATEGORIES = "SELECT * FROM categories;";
+        return jdbcOperations.queryForList(SELECT_FROM_CATEGORIES, new HashMap<>());
     }
 
     public int findNumberOfBooksByCategory(String booksCategory) {
