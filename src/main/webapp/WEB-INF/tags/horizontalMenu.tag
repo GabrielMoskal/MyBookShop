@@ -23,14 +23,36 @@
 
     ul.horizontal_bar li a {
         display: block;
+        align-content: center;
         padding: 8px;
         color: white;
+        font-size: 16px;
         text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        outline:none;
+        height: 40px;
     }
 
     ul.horizontal_bar li a:hover {
         background-color: red;
         height: 40px;
+    }
+
+    input[type=submit] {
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 40px;
+        background-color: blue;
+        border: none;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        outline:none;
+        width: 100%;
     }
 </style>
 

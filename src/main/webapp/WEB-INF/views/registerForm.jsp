@@ -6,11 +6,15 @@
 <head>
     <title><s:message code="registration.title" /></title>
     <style>
+        body {
+            margin: 0;
+        }
+
         input {
-            width: 50%;
+            width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
-            border: 2px green;
+            border: 2px solid green;
             border-radius: 5px;
         }
     </style>

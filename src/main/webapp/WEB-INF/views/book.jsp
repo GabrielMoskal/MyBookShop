@@ -5,6 +5,12 @@
 <html>
 <head>
     <title>My Spring App</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+    </style>
 </head>
 <body>
 <myTag:horizontalMenu />

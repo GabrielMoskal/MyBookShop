@@ -17,12 +17,13 @@
             border: 3px red;
         }
 
-        header, footer {
+        footer {
             padding: 1em;
             color: white;
-            background-color: black;
+            background-color: blue;
             clear: left;
             text-align: center;
+            height: 40px;
         }
     </style>
 </head>

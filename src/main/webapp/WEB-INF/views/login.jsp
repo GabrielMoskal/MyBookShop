@@ -7,11 +7,15 @@
 <head>
     <title><s:message code="myapp.login" /> </title>
     <style>
+        body {
+            margin: 0;
+        }
+
         input {
-            width: 50%;
+            width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
-            border: 2px green;
+            border: 2px solid green;
             border-radius: 5px;
         }
     </style>
@@ -33,8 +37,8 @@
             <td><input type="password" name="password" /></td>
         </tr>
         <tr>
-            <td><input id="remember_me" name="remember-me" type="checkbox" /></td>
             <td><s:message code="logging.rememberMe" /></td>
+            <td><input id="remember_me" name="remember-me" type="checkbox" /></td>
         </tr>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <tr>
