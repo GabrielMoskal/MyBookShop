@@ -8,8 +8,7 @@
         display: inline-block;
         width: 140px;
         height: 300px;
-        margin: 10px;
-        border: 3px solid #73AD21;
+        margin: 20px;
     }
 
     .floating-box p {
@@ -24,5 +23,6 @@
         <img src="<c:out value="${book.imgUrl}" />" style="width:140px;height:220px;" >
         <p><c:out value="${book.title}" /></p>
     </div>
-
 </c:forEach>
+
+

@@ -2,7 +2,10 @@ package app.web.controller;
 
 import app.data.BooksRepository;
 import app.web.dto.Book;
+import app.web.dto.NavigationButton;
+import app.web.service.BooksService;
 import app.web.service.CategoriesService;
+import app.web.service.NavigationButtonsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -22,13 +26,17 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping("/category")
 public class CategoriesController {
 
-    private BooksRepository booksRepository;
     private CategoriesService categoriesService;
+    private NavigationButtonsService navigationButtonsService;
+    private BooksService booksService;
 
     @Autowired
-    public CategoriesController(BooksRepository booksRepository, CategoriesService categoriesService) {
-        this.booksRepository = booksRepository;
+    public CategoriesController(CategoriesService categoriesService,
+                                NavigationButtonsService navigationButtonsService,
+                                BooksService booksService) {
         this.categoriesService = categoriesService;
+        this.navigationButtonsService = navigationButtonsService;
+        this.booksService = booksService;
     }
 
     @RequestMapping(method = GET)
@@ -43,18 +51,22 @@ public class CategoriesController {
     @RequestMapping(value = "/{categoryUrl}", method = GET)
     public String showCategory(@PathVariable String categoryUrl,
                                @RequestParam String categoryName,
-                               @RequestParam(value = "booksLimit", defaultValue = "15") int booksLimit,
+                               @RequestParam(value = "booksLimit", defaultValue = "25") int booksLimit,
                                @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                Model model) {
         int offset = booksLimit * pageNumber;
-        List<Book> books = booksRepository.findBooks(categoryName, booksLimit, offset);
+        List<Book> books = booksService.retrieveBooks(categoryName, booksLimit, offset);
         model.addAttribute("books", books);
 
-        Map<String, String> myParam = categoriesService.makeBooksCategories();
-        model.addAttribute("categories", myParam);
+        Map<String, String> booksCategories = categoriesService.makeBooksCategories();
+        model.addAttribute("categories", booksCategories);
 
         model.addAttribute("categoryName", categoryName);
+        model.addAttribute("categoryUrl", categoryUrl);
 
+        int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
+        SortedSet<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageNumber);
+        model.addAttribute("navigationButtons", navigationButtons);
         return "category";
     }
 }

@@ -5,7 +5,6 @@ import app.web.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,5 +22,11 @@ public class BooksService {
 
     public List<Book> retrieveBooks(String categoryName, int booksLimit, int offset) {
         return booksRepository.findBooks(categoryName, booksLimit, offset);
+    }
+
+    public int findNumberOfPagesByCategory(String category, int booksLimitPerPage) {
+        int numOfBooks = booksRepository.findNumberOfBooksByCategory(category);
+        double numOfPages = (double)numOfBooks / booksLimitPerPage;
+        return (int)Math.ceil(numOfPages);
     }
 }

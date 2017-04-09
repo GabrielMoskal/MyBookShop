@@ -136,4 +136,19 @@ public class JdbcBooksRepository implements BooksRepository {
                 .imgUrl(rs.getString("image_url"))
                 .build();
     }
+
+    public int findNumberOfBooksByCategory(String booksCategory) {
+        final String NUMBER_OF_BOOKS = "SELECT COUNT(*) " +
+                "FROM books " +
+                "NATURAL JOIN books_categories " +
+                "WHERE category = :booksCategory;";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("booksCategory", booksCategory);
+        return jdbcOperations.queryForObject(
+                NUMBER_OF_BOOKS,
+                params,
+                (resultSet, rowNumber) -> resultSet.getInt("COUNT(*)")
+        );
+    }
 }

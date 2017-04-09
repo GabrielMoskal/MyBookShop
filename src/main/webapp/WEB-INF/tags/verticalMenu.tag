@@ -59,9 +59,7 @@
         cursor: pointer;
         float: left;
         outline:none;
-
         width: 100%;
-
         font-family:inherit;
     }
 

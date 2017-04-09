@@ -11,6 +11,12 @@
             margin: 0;
         }
 
+        .page-navigation-box li {
+            display: inline-block;
+            margin: 5px;
+            border: 3px red;
+        }
+
         header, footer {
             padding: 1em;
             color: white;
@@ -28,6 +34,14 @@
 
     <div style="margin-left:20%;margin-top:40px;padding:1px 16px;height:auto;">
         <myTag:books />
+
+        <br><br>
+        <ul class="page-navigation-box" >
+
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
     </div>
 
     <footer>

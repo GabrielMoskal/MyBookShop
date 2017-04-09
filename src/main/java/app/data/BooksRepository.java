@@ -14,4 +14,5 @@ public interface BooksRepository {
     void insertIntoCategories(String category, String url);
     List<Book> findBooks(String booksCategory, int booksLimit, int booksOffset);
     List<String> retrieveCategoriesNames();
+    int findNumberOfBooksByCategory(String booksCategory);
 }
