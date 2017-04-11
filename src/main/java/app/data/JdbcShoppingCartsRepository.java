@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,16 +17,10 @@ import java.util.Map;
 public class JdbcShoppingCartsRepository implements ShoppingCartsRepository {
 
     private NamedParameterJdbcOperations jdbcOperations;
-    private BooksRepository booksRepository;
-    private UsersRepository usersRepository;
 
     @Autowired
-    public JdbcShoppingCartsRepository(@Qualifier("jdbcUsers") NamedParameterJdbcOperations jdbcOperations,
-                                       BooksRepository booksRepository,
-                                       UsersRepository usersRepository) {
+    public JdbcShoppingCartsRepository(@Qualifier("jdbcUsers") NamedParameterJdbcOperations jdbcOperations) {
         this.jdbcOperations = jdbcOperations;
-        this.booksRepository = booksRepository;
-        this.usersRepository = usersRepository;
     }
 
     public void insertIntoCart(final String username, int bookid, int quantity) {
@@ -40,10 +35,25 @@ public class JdbcShoppingCartsRepository implements ShoppingCartsRepository {
         jdbcOperations.update(INSERT_INTO_CART, params);
     }
 
-    // TODO
-    /* retrieve list/map of shopping cart content, then add it to a new shopping cart which would be returned
-     * to the user */
     public ShoppingCart retrieveShoppingCart(String username) {
+        List<Map<String, Object>> categoriesToColumns = retrieveBookidsToQuantities(username);
+        ShoppingCart shoppingCart = new ShoppingCart(username);
+        for (Map<String, Object> categoryToColumn : categoriesToColumns) {
+            Integer bookid = (Integer)categoryToColumn.get("bookid");
+            Integer quantity = (Integer)categoryToColumn.get("quantity");
+            shoppingCart.putBook(bookid, quantity);
+        }
+        return shoppingCart;
+    }
 
+    /* retrieves bookids and usernames from shopping_cart table which belongs to the user with given username */
+    private List<Map<String, Object>> retrieveBookidsToQuantities(String username) {
+        final String SELECT_FROM_CART = "SELECT bookid, quantity " +
+                "FROM shopping_cart " +
+                "WHERE username = :username;";
+        Map<String, Object> params = new HashMap<>();
+        params.put("username", username);
+
+        return jdbcOperations.queryForList(SELECT_FROM_CART, params);
     }
 }

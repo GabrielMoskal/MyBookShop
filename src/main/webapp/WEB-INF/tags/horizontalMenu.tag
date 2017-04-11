@@ -67,7 +67,11 @@
         </security:authorize>
 
         <security:authorize access="isAuthenticated()">
-            <li><a href="#user_panel">User Panel</a></li>
+            <li>
+                <a href="<c:url value="/users/profile" />" >
+                    <s:message code="userProfile.profile" />
+                </a>
+            </li>
         </security:authorize>
 
         <security:authorize access="isAuthenticated()">

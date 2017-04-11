@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+import java.security.Principal;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -38,14 +40,17 @@ public class UsersController {
 
     @RequestMapping(value="/register", method= POST)
     public String processRegistration(@Valid @ModelAttribute User user,
-                                      Errors errors,
-                                      Model model) {
+                                      Errors errors) {
         if (errors.hasErrors()) {
             return "registerForm";
         }
-
         userRepository.register(user);
-        String username = user.getUsername();
+        return "redirect:/profile";
+    }
+
+    @RequestMapping(value = "/profile", method = GET)
+    public String showProfile(Principal principal, Model model) {
+        String username = principal.getName();
         model.addAttribute("username", username);
         return "redirect:/users/{username}";
     }

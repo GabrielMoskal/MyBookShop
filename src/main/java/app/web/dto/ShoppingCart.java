@@ -15,15 +15,19 @@ public class ShoppingCart {
         bookidToQuantity = new HashMap<>();
     }
 
-    public void putBook(Integer bookid, Integer bookquantity) {
+    public void putBook(Integer bookid, Integer quantity) {
         Integer totalQuantity = bookidToQuantity.get(bookid);
         if (totalQuantity == null) {
-            totalQuantity = bookquantity;
+            totalQuantity = quantity;
         }
         else {
-            totalQuantity += bookquantity;
+            totalQuantity += quantity;
         }
         bookidToQuantity.put(bookid, totalQuantity);
+    }
+
+    public void putBook(Map<Integer, Integer> bookidToQuantity) {
+        this.bookidToQuantity.putAll(bookidToQuantity);
     }
 
     public void setUsername(String username) {
