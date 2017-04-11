@@ -1,44 +1,30 @@
 package app.web.dto;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gabriel on 11.04.2017.
  */
 public class ShoppingCart {
-    private String username;
-    private Map<Integer, Integer> bookidToQuantity;
+    private List<ShoppingCartItem> shoppingCartItems;
 
-    public ShoppingCart(String username) {
-        setUsername(username);
-        bookidToQuantity = new HashMap<>();
+    public ShoppingCart() {
+        shoppingCartItems = new ArrayList<>();
     }
 
-    public void putBook(Integer bookid, Integer quantity) {
-        Integer totalQuantity = bookidToQuantity.get(bookid);
-        if (totalQuantity == null) {
-            totalQuantity = quantity;
+    public void putItem(ShoppingCartItem shoppingCartItem) {
+        if (shoppingCartItems.contains(shoppingCartItem)) {
+            int index = shoppingCartItems.indexOf(shoppingCartItem);
+            ShoppingCartItem previousItem = shoppingCartItems.get(index);
+            int quantity = previousItem.getQuantity();
+            quantity += shoppingCartItem.getQuantity();
+            shoppingCartItem.setQuantity(quantity);
         }
-        else {
-            totalQuantity += quantity;
-        }
-        bookidToQuantity.put(bookid, totalQuantity);
+        shoppingCartItems.add(shoppingCartItem);
     }
 
-    public void putBook(Map<Integer, Integer> bookidToQuantity) {
-        this.bookidToQuantity.putAll(bookidToQuantity);
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public Map<Integer, Integer> getBookidToQuantity() {
-        return bookidToQuantity;
+    public List<ShoppingCartItem> getShoppingCartItems() {
+        return this.shoppingCartItems;
     }
 }

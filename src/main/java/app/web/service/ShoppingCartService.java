@@ -4,14 +4,19 @@ import app.data.BooksRepository;
 import app.data.ShoppingCartsRepository;
 import app.web.dto.Book;
 import app.web.dto.ShoppingCart;
+import app.web.dto.ShoppingCartItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Gabriel on 11.04.2017.
  */
+@Service
 public class ShoppingCartService {
+
     private ShoppingCartsRepository cartsRepository;
     private BooksRepository booksRepository;
 
@@ -22,11 +27,19 @@ public class ShoppingCartService {
         this.booksRepository = booksRepository;
     }
 
-    public void test(String username) {
-        ShoppingCart cart = cartsRepository.retrieveShoppingCart(username);
-        Map<Integer, Integer> bookidToQuantity = cart.getBookidToQuantity();
-        for (int bookid : bookidToQuantity.keySet()) {
+    public ShoppingCart makeShoppingCart(String username) {
+        List<Map<String, Object>> categoriesToColumns = cartsRepository.retrieveBookidsToQuantities(username);
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        for (Map<String, Object> categoryToColumn : categoriesToColumns) {
+            Integer bookid = (Integer)categoryToColumn.get("bookid");
+            Integer quantity = (Integer)categoryToColumn.get("quantity");
             Book book = booksRepository.retrieveBook(bookid);
+            String title = book.getTitle();
+
+            ShoppingCartItem item = new ShoppingCartItem(bookid, title, quantity);
+            shoppingCart.putItem(item);
         }
+        return shoppingCart;
     }
 }

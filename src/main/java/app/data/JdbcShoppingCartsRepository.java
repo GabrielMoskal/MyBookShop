@@ -1,6 +1,5 @@
 package app.data;
 
-import app.web.dto.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -35,19 +34,7 @@ public class JdbcShoppingCartsRepository implements ShoppingCartsRepository {
         jdbcOperations.update(INSERT_INTO_CART, params);
     }
 
-    public ShoppingCart retrieveShoppingCart(String username) {
-        List<Map<String, Object>> categoriesToColumns = retrieveBookidsToQuantities(username);
-        ShoppingCart shoppingCart = new ShoppingCart(username);
-        for (Map<String, Object> categoryToColumn : categoriesToColumns) {
-            Integer bookid = (Integer)categoryToColumn.get("bookid");
-            Integer quantity = (Integer)categoryToColumn.get("quantity");
-            shoppingCart.putBook(bookid, quantity);
-        }
-        return shoppingCart;
-    }
-
-    /* retrieves bookids and usernames from shopping_cart table which belongs to the user with given username */
-    private List<Map<String, Object>> retrieveBookidsToQuantities(String username) {
+    public List<Map<String, Object>> retrieveBookidsToQuantities(String username) {
         final String SELECT_FROM_CART = "SELECT bookid, quantity " +
                 "FROM shopping_cart " +
                 "WHERE username = :username;";

@@ -1,11 +1,12 @@
 package app.data;
 
-import app.web.dto.ShoppingCart;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Gabriel on 11.04.2017.
  */
 public interface ShoppingCartsRepository {
     void insertIntoCart(String username, int bookid, int quantity);
-    ShoppingCart retrieveShoppingCart(String username);
+    List<Map<String, Object>> retrieveBookidsToQuantities(String username);
 }

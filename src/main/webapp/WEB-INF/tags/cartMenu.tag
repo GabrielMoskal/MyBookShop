@@ -73,9 +73,9 @@
 
 <div>
     <ul class="vertical_bar">
-        <h1><s:message code="userPanel.title" /></h1>
+        <h1><s:message code="userProfile.title" /></h1>
         <sf:form method="GET" action="shoppingCart" acceptCharset="UTF-8">
-            <button type="submit" class="btn_link"><s:message code="userPanel.shoppingCart" /></button>
+            <button type="submit" class="btn_link"><s:message code="userProfile.shoppingCart" /></button>
         </sf:form>
     </ul>
 </div>

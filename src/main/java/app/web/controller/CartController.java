@@ -1,7 +1,7 @@
 package app.web.controller;
 
-import app.data.ShoppingCartsRepository;
 import app.web.dto.ShoppingCart;
+import app.web.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +17,17 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @Controller
 @RequestMapping("/cart")
 public class CartController {
-    private ShoppingCartsRepository cartsRepository;
+    private ShoppingCartService shoppingCartService;
 
     @Autowired
-    CartController(ShoppingCartsRepository cartsRepository) {
-        this.cartsRepository = cartsRepository;
+    CartController(ShoppingCartService shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
     }
 
     @RequestMapping(method = GET)
     public String getCart(Principal principal, Model model) {
         String username = principal.getName();
-        ShoppingCart cart = cartsRepository.retrieveShoppingCart(username);
+        ShoppingCart cart = shoppingCartService.makeShoppingCart(username);
         model.addAttribute("cart", cart);
         return "shoppingCart";
     }
