@@ -24,7 +24,7 @@ public class JdbcShoppingCartsRepository implements ShoppingCartsRepository {
 
     public void insertIntoCart(final String username, int bookid, int quantity) {
         final String INSERT_INTO_CART = "INSERT INTO shopping_cart(username, bookid, quantity) " +
-                "VALUES(username = :username, bookid = :bookid, quantity = :quantity) " +
+                "VALUES(:username, :bookid, :quantity) " +
                 "ON DUPLICATE KEY UPDATE quantity = quantity + :quantity;";
 
         Map<String, Object> params = new HashMap<>();

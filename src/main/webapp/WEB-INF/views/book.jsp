@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,6 +11,28 @@
             margin: 0;
         }
 
+        .btn_link {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            outline:none;
+            width: 20%;
+            font-family:inherit;
+        }
+
+        .btn_link:hover:not(.active) {
+            background-color: #555;
+            color: white;
+            border: none;
+            outline: none;
+        }
+
     </style>
 </head>
 <body>
@@ -17,6 +40,14 @@
 <div style="margin-left:10%;margin-top:40px;padding:1px 16px;height:1000px;">
     <ul>
         <h1><c:out value="${book.title}" /></h1>
+    </ul>
+    <ul>
+        <form method="POST" action="<c:url value="/cart" />" >
+            <input type="hidden" name="bookid" value="<c:out value="${book.index}" />">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+            <button class="btn_link" type="submit" value="update_cart" >Add to cart</button>
+        </form>
     </ul>
     <ul>
         <img src="<c:out value="${book.imgUrl}" /> ">

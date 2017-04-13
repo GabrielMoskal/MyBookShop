@@ -15,36 +15,15 @@
         position: fixed;
         height: 100%;
         overflow: auto;
-    }
-
-    ul.vertical_bar li a {
-        display: block;
-        color: #000;
-        padding: 8px 16px;
-        text-decoration: none;
-        text-align: center;
-    }
-
-    ul.vertical_bar li a.active {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    ul.vertical_bar li a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-    }
-
-    ul.vertical_bar li a:active:not(.active) {
-        background-color: red;
-        color: white;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     ul.vertical_bar h1 {
         size: 16px;
-        color: black;
+        color: white;
+        background-color: #4CAF50;
         padding: 5px;
-        margin: 5px;
+        margin: 0;
     }
 
     .btn_link {
