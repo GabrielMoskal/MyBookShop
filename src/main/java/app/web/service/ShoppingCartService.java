@@ -42,4 +42,8 @@ public class ShoppingCartService {
         }
         return shoppingCart;
     }
+
+    public void addIntoCart(String username, int bookid, int quantity) {
+        cartsRepository.insertIntoCart(username, bookid, quantity);
+    }
 }

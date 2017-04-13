@@ -46,7 +46,7 @@
             <input type="hidden" name="bookid" value="<c:out value="${book.index}" />">
             <input type="hidden" name="quantity" value="1">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
-            <button class="btn_link" type="submit" value="update_cart" >Add to cart</button>
+            <button class="btn_link" type="submit" value="update_cart" ><s:message code="shoppingCart.add"/></button>
         </form>
     </ul>
     <ul>

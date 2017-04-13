@@ -49,7 +49,11 @@
             </tr>
             <c:forEach items="${cart.shoppingCartItems}" var="items">
                 <tr>
-                    <td><c:out value="${items.bookTitle}" /></td>
+                    <td>
+                        <a href="<c:url value="/book/${items.bookid}" />">
+                            <c:out value="${items.bookTitle}"/>
+                        </a>
+                    </td>
                     <td><c:out value="${items.quantity}" /></td>
                 </tr>
             </c:forEach>

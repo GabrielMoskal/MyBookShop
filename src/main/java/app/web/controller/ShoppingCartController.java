@@ -19,14 +19,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 @Controller
 @RequestMapping("/cart")
-public class CartController {
+public class ShoppingCartController {
     private ShoppingCartService shoppingCartService;
 
     @Autowired
-    private JdbcShoppingCartsRepository cartsRepository;
-
-    @Autowired
-    CartController(ShoppingCartService shoppingCartService) {
+    ShoppingCartController(ShoppingCartService shoppingCartService) {
         this.shoppingCartService = shoppingCartService;
     }
 
@@ -38,13 +35,12 @@ public class CartController {
         return "shoppingCart";
     }
 
-    // TODO
     @RequestMapping(method = POST)
     public String updateCart(@ModelAttribute(value = "bookid") int bookid,
                              @ModelAttribute(value = "quantity") int quantity,
                              Principal principal) {
         String username = principal.getName();
-        cartsRepository.insertIntoCart(username, bookid, quantity);
-        return "/home";
+        shoppingCartService.addIntoCart(username, bookid, quantity);
+        return "redirect:/book/" + bookid;
     }
 }

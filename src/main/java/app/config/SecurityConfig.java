@@ -32,14 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // need to set proper filter to not have problems with encoding, CharacterEncodingFilter must go first
-        CharacterEncodingFilter filter = new CharacterEncodingFilter();
-        filter.setEncoding("UTF-8");
-        filter.setForceEncoding(true);
-        http.addFilterBefore(filter, CsrfFilter.class);
-
+        addCharacterEncodingFilter(http);
         http
                 .authorizeRequests()
+                    .antMatchers("/cart").hasAuthority("USER")
                     .anyRequest().permitAll()
                 .and()
                 .formLogin()
@@ -58,9 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .requiresChannel()
                     .anyRequest().requiresSecure();
-                    //.antMatchers("/users/login").requiresSecure()
-                    //.antMatchers("/users/register").requiresSecure();
-                    //.antMatchers("/").requiresInsecure() breaks csrf protection;
+    }
+
+    // need to set proper filter to not have problems with encoding, CharacterEncodingFilter must go first
+    private void addCharacterEncodingFilter(HttpSecurity http) {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        http.addFilterBefore(filter, CsrfFilter.class);
     }
 
     @Override

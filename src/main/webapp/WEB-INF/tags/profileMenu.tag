@@ -11,6 +11,7 @@
         padding: 0;
         width: 20%;
         background-color: #4CAF50;
+        top: 40px;
         position: fixed;
         height: 100%;
         overflow: auto;
