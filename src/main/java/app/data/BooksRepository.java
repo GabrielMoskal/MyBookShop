@@ -10,6 +10,7 @@ import java.util.List;
 public interface BooksRepository {
     Book retrieveBook(int index);
     List<Book> retrieveBooks(String booksCategory, int booksLimit, int booksOffset);
+    List<Book> retrieveNewBooks(int booksLimit, int booksOffset);
     List<String> retrieveCategoriesNames();
     int findNumberOfBooksByCategory(String booksCategory);
 }

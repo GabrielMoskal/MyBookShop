@@ -39,14 +39,4 @@ public class HomeController {
 
         return "home";
     }
-
-    @RequestMapping(method = GET, value = "/home2")
-    public String home2() {
-        return "home2";
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public String test() {
-        return "home2";
-    }
 }

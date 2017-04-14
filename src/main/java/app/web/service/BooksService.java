@@ -24,6 +24,10 @@ public class BooksService {
         return booksRepository.retrieveBooks(categoryName, booksLimit, offset);
     }
 
+    public List<Book> retrieveNewBooks(int booksLimit, int offset) {
+        return booksRepository.retrieveNewBooks(booksLimit, offset);
+    }
+
     public int findNumberOfPagesByCategory(String category, int booksLimitPerPage) {
         int numOfBooks = booksRepository.findNumberOfBooksByCategory(category);
         double numOfPages = (double)numOfBooks / booksLimitPerPage;

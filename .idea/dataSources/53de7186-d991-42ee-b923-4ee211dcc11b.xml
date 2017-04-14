@@ -18,116 +18,127 @@
     <table id="12" parent="2" name="books"/>
     <table id="13" parent="2" name="books_categories"/>
     <table id="14" parent="2" name="categories"/>
-    <column id="15" parent="12" name="bookid">
+    <table id="15" parent="2" name="new_books"/>
+    <column id="16" parent="12" name="bookid">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="12" name="title">
+    <column id="17" parent="12" name="title">
       <Position>2</Position>
       <DataType>varchar(512)|0</DataType>
     </column>
-    <column id="17" parent="12" name="author">
+    <column id="18" parent="12" name="author">
       <Position>3</Position>
       <DataType>varchar(512)|0</DataType>
     </column>
-    <column id="18" parent="12" name="publisher">
+    <column id="19" parent="12" name="publisher">
       <Position>4</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="19" parent="12" name="release_year">
+    <column id="20" parent="12" name="release_year">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="20" parent="12" name="pages">
+    <column id="21" parent="12" name="pages">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="21" parent="12" name="book_format">
+    <column id="22" parent="12" name="book_format">
       <Position>7</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="22" parent="12" name="devices">
+    <column id="23" parent="12" name="devices">
       <Position>8</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="23" parent="12" name="printing">
+    <column id="24" parent="12" name="printing">
       <Position>9</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="24" parent="12" name="copying">
+    <column id="25" parent="12" name="copying">
       <Position>10</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="25" parent="12" name="translator">
+    <column id="26" parent="12" name="translator">
       <Position>11</Position>
       <DataType>varchar(512)|0</DataType>
     </column>
-    <column id="26" parent="12" name="book_language">
+    <column id="27" parent="12" name="book_language">
       <Position>12</Position>
       <DataType>varchar(254)|0</DataType>
     </column>
-    <column id="27" parent="12" name="description">
+    <column id="28" parent="12" name="description">
       <Position>13</Position>
       <DataType>text|0</DataType>
     </column>
-    <column id="28" parent="12" name="image_url">
+    <column id="29" parent="12" name="image_url">
       <Position>14</Position>
       <DataType>varchar(510)|0</DataType>
     </column>
-    <index id="29" parent="12" name="ksiazka_indeks_uindex">
+    <index id="30" parent="12" name="ksiazka_indeks_uindex">
       <ColNames>bookid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="30" parent="12" name="PRIMARY">
+    <key id="31" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>bookid</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="31" parent="12" name="ksiazka_indeks_uindex">
+    <key id="32" parent="12" name="ksiazka_indeks_uindex">
       <ColNames>bookid</ColNames>
       <UnderlyingIndexName>ksiazka_indeks_uindex</UnderlyingIndexName>
     </key>
-    <column id="32" parent="13" name="bookid">
+    <column id="33" parent="13" name="bookid">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="33" parent="13" name="category">
+    <column id="34" parent="13" name="category">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="34" parent="13" name="books_categories_bookid_uindex">
+    <index id="35" parent="13" name="books_categories_bookid_uindex">
       <ColNames>bookid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="35" parent="13" name="books_categories_bookid_uindex">
+    <key id="36" parent="13" name="books_categories_bookid_uindex">
       <ColNames>bookid</ColNames>
       <UnderlyingIndexName>books_categories_bookid_uindex</UnderlyingIndexName>
     </key>
-    <column id="36" parent="14" name="category">
+    <column id="37" parent="14" name="category">
       <Position>1</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="37" parent="14" name="empik_url">
+    <column id="38" parent="14" name="empik_url">
       <Position>2</Position>
       <DataType>varchar(254)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="38" parent="14" name="kategorie_kategoria_uindex">
+    <index id="39" parent="14" name="kategorie_kategoria_uindex">
       <ColNames>category</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="14" name="PRIMARY">
+    <key id="40" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>category</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="40" parent="14" name="kategorie_kategoria_uindex">
+    <key id="41" parent="14" name="kategorie_kategoria_uindex">
       <ColNames>category</ColNames>
       <UnderlyingIndexName>kategorie_kategoria_uindex</UnderlyingIndexName>
+    </key>
+    <column id="42" parent="15" name="bookid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="43" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>bookid</ColNames>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>

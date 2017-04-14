@@ -1,6 +1,5 @@
 package app.web.controller;
 
-import app.data.JdbcShoppingCartsRepository;
 import app.web.dto.ShoppingCart;
 import app.web.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;

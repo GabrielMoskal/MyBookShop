@@ -53,7 +53,7 @@ public class JdbcBooksRepository implements BooksRepository {
 
     private Book mapBook(ResultSet rs, int rowNum) throws SQLException {
         return new Book.Builder()
-                .index(rs.getInt("bookid"))
+                .index(rs.getLong("bookid"))
                 .title(rs.getString("title"))
                 .author(rs.getString("author"))
                 .publisher(rs.getString("publisher"))
@@ -69,6 +69,20 @@ public class JdbcBooksRepository implements BooksRepository {
                 .category(rs.getString("category"))
                 .imgUrl(rs.getString("image_url"))
                 .build();
+    }
+
+    public List<Book> retrieveNewBooks(int booksLimit, int booksOffset) {
+        final String SELECT_NEW_BOOKS = "SELECT * " +
+                "FROM books " +
+                "NATURAL JOIN new_books " +
+                "JOIN books_categories USING(bookid) " +
+                "LIMIT :booksLimit " +
+                "OFFSET :booksOffset;";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("booksLimit", booksLimit);
+        params.put("booksOffset", booksOffset);
+        return jdbcOperations.query(SELECT_NEW_BOOKS, params, this::mapBook);
     }
 
     public List<String> retrieveCategoriesNames() {

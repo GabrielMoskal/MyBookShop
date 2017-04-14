@@ -4,12 +4,12 @@ package app.web.dto;
  * Created by Gabriel on 04.04.2017.
  */
 public class Book {
-    private long index;
+    private Long index;
     private String title;
     private String author;
     private String translator;
     private String publisher;
-    private int year;
+    private Integer year;
     private String language;
     private Integer pages;
     private String format;
@@ -43,16 +43,11 @@ public class Book {
         this.imgUrl = builder.imgUrl;
     }
 
-    @Override
-    public String toString() {
-        return title;
-    }
-
-    public long getIndex() {
+    public Long getIndex() {
         return index;
     }
 
-    public void setIndex(long index) {
+    public void setIndex(Long index) {
         this.index = index;
     }
 
@@ -88,11 +83,11 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
@@ -152,7 +147,9 @@ public class Book {
         this.description = description;
     }
 
-    public String getCategory() { return category; }
+    public String getCategory() {
+        return category;
+    }
 
     public void setCategory(String category) {
         this.category = category;
@@ -162,7 +159,7 @@ public class Book {
         return imgUrl;
     }
 
-    public void setimgUrl(String imgUrl) {
+    public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 
@@ -173,20 +170,20 @@ public class Book {
 
         Book book = (Book) o;
 
-        if (year != book.year) return false;
         if (title != null ? !title.equals(book.title) : book.title != null) return false;
         if (author != null ? !author.equals(book.author) : book.author != null) return false;
         if (translator != null ? !translator.equals(book.translator) : book.translator != null) return false;
         if (publisher != null ? !publisher.equals(book.publisher) : book.publisher != null) return false;
+        if (year != null ? !year.equals(book.year) : book.year != null) return false;
         if (language != null ? !language.equals(book.language) : book.language != null) return false;
         if (pages != null ? !pages.equals(book.pages) : book.pages != null) return false;
         if (format != null ? !format.equals(book.format) : book.format != null) return false;
         if (devices != null ? !devices.equals(book.devices) : book.devices != null) return false;
         if (printing != null ? !printing.equals(book.printing) : book.printing != null) return false;
         if (copying != null ? !copying.equals(book.copying) : book.copying != null) return false;
+        if (description != null ? !description.equals(book.description) : book.description != null) return false;
         if (category != null ? !category.equals(book.category) : book.category != null) return false;
-        if (imgUrl != null ? !imgUrl.equals(book.imgUrl) : book.imgUrl != null) return false;
-        return description != null ? description.equals(book.description) : book.description == null;
+        return imgUrl != null ? imgUrl.equals(book.imgUrl) : book.imgUrl == null;
     }
 
     @Override
@@ -195,7 +192,7 @@ public class Book {
         result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + (translator != null ? translator.hashCode() : 0);
         result = 31 * result + (publisher != null ? publisher.hashCode() : 0);
-        result = 31 * result +  year;
+        result = 31 * result + (year != null ? year.hashCode() : 0);
         result = 31 * result + (language != null ? language.hashCode() : 0);
         result = 31 * result + (pages != null ? pages.hashCode() : 0);
         result = 31 * result + (format != null ? format.hashCode() : 0);
@@ -209,12 +206,12 @@ public class Book {
     }
 
     public static class Builder {
-        private long index;
+        private Long index;
         private String title;
         private String author;
         private String translator;
         private String publisher;
-        private int year;
+        private Integer year;
         private String language;
         private Integer pages;
         private String format;
@@ -225,7 +222,7 @@ public class Book {
         private String category;
         private String imgUrl;
 
-        public Builder index(long index) {
+        public Builder index(Long index) {
             this.index = index;
             return this;
         }
@@ -250,7 +247,7 @@ public class Book {
             return this;
         }
 
-        public Builder year(int year) {
+        public Builder year(Integer year) {
             this.year = year;
             return this;
         }
