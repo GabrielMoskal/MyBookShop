@@ -45,7 +45,7 @@ public class UsersController {
             return "registerForm";
         }
         userRepository.register(user);
-        return "redirect:/profile";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/profile", method = GET)

@@ -32,8 +32,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public MessageSource getMessageSource() {
         final String ROOT_PROPERTIES_BASENAME = "WEB-INF/classes/";
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasenames(ROOT_PROPERTIES_BASENAME + "messages",
-                                    ROOT_PROPERTIES_BASENAME + "foo");
+        messageSource.setBasenames(ROOT_PROPERTIES_BASENAME + "messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

@@ -56,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().requiresSecure();
     }
 
-    // need to set proper filter to not have problems with encoding, CharacterEncodingFilter must go first
+    // sets proper filters order to avoid problems with encoding,
+    // CharacterEncodingFilter must be added before CsrfFilter
     private void addCharacterEncodingFilter(HttpSecurity http) {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         filter.setEncoding("UTF-8");
