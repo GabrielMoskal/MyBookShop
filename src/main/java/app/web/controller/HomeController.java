@@ -34,7 +34,7 @@ public class HomeController {
         Map<String, String> myParam = categoriesService.makeBooksCategories();
         model.addAttribute("categories", myParam);
 
-        List<Book> books = booksService.retrieveBooks("Komiks", 15, 0);
+        List<Book> books = booksService.retrieveNewBooks(25, 0);
         model.addAttribute("books", books);
 
         return "home";

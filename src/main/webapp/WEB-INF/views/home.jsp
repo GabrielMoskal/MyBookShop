@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="myTag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
     isELIgnored="false" %>
 <html>
@@ -34,15 +35,11 @@
     <myTag:verticalMenu />
 
     <div style="margin-left:20%;margin-top:40px;padding:1px 16px;height:auto;">
+
+        <h1><s:message code="myapp.new"/></h1>
+
         <myTag:books />
 
-        <br><br>
-        <ul class="page-navigation-box" >
-
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-        </ul>
     </div>
 
     <footer>
