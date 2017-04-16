@@ -36,6 +36,9 @@ public class CategoriesService {
     private String makeCategoryUrl(final String concreteCategory) {
         String result = concreteCategory.toLowerCase();
         result = StringUtils.stripAccents(result);
+
+        /* StringUtils.stripAccents doesn't replace 'ł' so it must be done manually,
+         * replace space with '-' too */
         result = result.replace('ł', 'l')
                 .replace(' ', '-');
         try {

@@ -5,7 +5,7 @@ package app.web.dto;
  * Created by Gabriel on 08.04.2017.
  */
 public class NavigationButton implements Comparable<NavigationButton> {
-    private int pageNumber;
+    private int pageIndex;
     private String categoryUrl;
     private String name;
 
@@ -18,7 +18,7 @@ public class NavigationButton implements Comparable<NavigationButton> {
             return 0;
         }
         int argumentPageNumber = navigationButton.getPageNumber();
-        if (pageNumber <= argumentPageNumber) {
+        if (pageIndex <= argumentPageNumber) {
             return -1;
         }
         else {
@@ -28,15 +28,15 @@ public class NavigationButton implements Comparable<NavigationButton> {
 
     @Override
     public String toString() {
-        return pageNumber + " " + categoryUrl + " " + name;
+        return pageIndex + " " + categoryUrl + " " + name;
     }
 
     public int getPageNumber() {
-        return pageNumber;
+        return pageIndex;
     }
 
     public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
+        this.pageIndex = pageNumber;
     }
 
     public String getName() {
@@ -62,14 +62,14 @@ public class NavigationButton implements Comparable<NavigationButton> {
 
         NavigationButton button = (NavigationButton) o;
 
-        if (pageNumber != button.pageNumber) return false;
+        if (pageIndex != button.pageIndex) return false;
         if (categoryUrl != null ? !categoryUrl.equals(button.categoryUrl) : button.categoryUrl != null) return false;
         return name != null ? name.equals(button.name) : button.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = pageNumber;
+        int result = pageIndex;
         result = 31 * result + (categoryUrl != null ? categoryUrl.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;

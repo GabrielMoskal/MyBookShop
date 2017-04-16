@@ -54,11 +54,11 @@
     <ul class="vertical_bar">
         <h1><s:message code="verticalMenu.categories" /></h1>
         <c:forEach var="category" items="${categories}" >
-            <sf:form method="GET" action="category" acceptCharset="UTF-8">
+            <form method="GET" action="<c:url value="/category"/>" >
                 <input type="hidden" name="categoryUrl" value="<c:out value="${category.key}"/>" />
                 <input type="hidden" name="categoryName" value="<c:out value="${category.value}"/>" />
                 <button type="submit" class="btn_link"><c:out value="${category.value}" /></button>
-            </sf:form>
+            </form>
         </c:forEach>
     </ul>
 </div>

@@ -31,8 +31,8 @@ public class HomeController {
 
     @RequestMapping(method = GET)
     public String home(Model model) {
-        Map<String, String> myParam = categoriesService.makeBooksCategories();
-        model.addAttribute("categories", myParam);
+        Map<String, String> categories = categoriesService.makeBooksCategories();
+        model.addAttribute("categories", categories);
 
         List<Book> books = booksService.retrieveNewBooks(25, 0);
         model.addAttribute("books", books);

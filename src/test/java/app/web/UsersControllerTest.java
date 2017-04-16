@@ -44,7 +44,7 @@ public class UsersControllerTest {
                 .param("firstName", "Michael")
                 .param("lastName", "Jordan")
                 .param("email", "michael@jordan.com"))
-                .andExpect(redirectedUrl("/profile"));
+                .andExpect(redirectedUrl("/home"));
         verify(usersRepository, atLeastOnce()).register(unsaved);
     }
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedSet;
+import java.util.Set;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -61,10 +61,9 @@ public class CategoriesController {
         model.addAttribute("categories", booksCategories);
 
         model.addAttribute("categoryName", categoryName);
-        model.addAttribute("categoryUrl", categoryUrl);
 
         int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
-        SortedSet<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageNumber);
+        Set<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageNumber);
         model.addAttribute("navigationButtons", navigationButtons);
         return "category";
     }

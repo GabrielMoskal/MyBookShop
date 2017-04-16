@@ -17,8 +17,6 @@ public class Book {
     private String printing;
     private String copying;
     private String description;
-
-    // idk, maybe need decomposition
     private String category;
     private String imgUrl;
 
