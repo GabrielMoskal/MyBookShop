@@ -20,7 +20,7 @@ public class JdbcUsersRepository implements UsersRepository {
     private PasswordEncoder passwordEncoder;
 
     private enum Group {USER(1L);
-        long id;
+        private long id;
 
         Group(long id) {
             this.id = id;
