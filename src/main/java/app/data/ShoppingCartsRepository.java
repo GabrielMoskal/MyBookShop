@@ -8,5 +8,6 @@ import java.util.Map;
  */
 public interface ShoppingCartsRepository {
     void insertIntoCart(String username, int bookid, int quantity);
+    void deleteEmptyRowFromCart(final String username, int bookid);
     List<Map<String, Object>> retrieveBookidsToQuantities(String username);
 }

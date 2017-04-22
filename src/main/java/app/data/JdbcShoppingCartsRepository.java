@@ -34,6 +34,18 @@ public class JdbcShoppingCartsRepository implements ShoppingCartsRepository {
         jdbcOperations.update(INSERT_INTO_CART, params);
     }
 
+    public void deleteEmptyRowFromCart(final String username, int bookid) {
+        final String DELETE_FROM_CART = "DELETE FROM shopping_cart " +
+                "WHERE username = :username " +
+                "AND bookid = :bookid " +
+                "AND quantity <= 0;";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("username", username);
+        params.put("bookid", bookid);
+        jdbcOperations.update(DELETE_FROM_CART, params);
+    }
+
     public List<Map<String, Object>> retrieveBookidsToQuantities(String username) {
         final String SELECT_FROM_CART = "SELECT bookid, quantity " +
                 "FROM shopping_cart " +

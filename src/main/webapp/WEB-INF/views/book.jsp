@@ -35,50 +35,8 @@
     </ul>
     <ul>
         <h3>
-            <s:message code="book.language" />
-            <c:out value="${book.language}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.index" />
-            <c:out value="${book.index}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
             <s:message code="book.translator" />
             <c:out value="${book.translator}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.copying" />
-            <c:out value="${book.copying}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.devices" />
-            <c:out value="${book.devices}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.format" />
-            <c:out value="${book.format}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.pages" />
-            <c:out value="${book.pages}" />
-        </h3>
-    </ul>
-    <ul>
-        <h3>
-            <s:message code="book.printing" />
-            <c:out value="${book.printing}" />
         </h3>
     </ul>
     <ul>
@@ -89,8 +47,50 @@
     </ul>
     <ul>
         <h3>
+            <s:message code="book.language" />
+            <c:out value="${book.language}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.pages" />
+            <c:out value="${book.pages}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
             <s:message code="book.year" />
             <c:out value="${book.year}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.format" />
+            <c:out value="${book.format}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.devices" />
+            <c:out value="${book.devices}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.printing" />
+            <c:out value="${book.printing}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.copying" />
+            <c:out value="${book.copying}" />
+        </h3>
+    </ul>
+    <ul>
+        <h3>
+            <s:message code="book.index" />
+            <c:out value="${book.index}" />
         </h3>
     </ul>
     <ul>

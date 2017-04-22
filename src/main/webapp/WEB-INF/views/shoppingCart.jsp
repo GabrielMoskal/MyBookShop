@@ -65,7 +65,16 @@
                             </button>
                         </form>
                     </td>
-                    <td><s:message code="shoppingCart.remove"/></td>
+                    <td>
+                        <form method="POST">
+                            <input type="hidden" name="bookid" value="<c:out value="${book.bookid}" />">
+                            <input type="hidden" name="quantity" value="-1">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+                            <button class="btn_link" type="submit" value="update_cart" >
+                                <s:message code="shoppingCart.remove"/>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

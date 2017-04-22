@@ -41,7 +41,7 @@ public class ShoppingCartController {
                              HttpServletRequest request,
                              Principal principal) {
         String username = principal.getName();
-        shoppingCartService.addIntoCart(username, bookid, quantity);
+        shoppingCartService.insertIntoCart(username, bookid, quantity);
         return redirectToPreviousPage(request);
     }
 

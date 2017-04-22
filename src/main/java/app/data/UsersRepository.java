@@ -7,6 +7,5 @@ import app.web.dto.User;
  */
 public interface UsersRepository {
     User register(User user);
-
     User findByUsername(String username);
 }
