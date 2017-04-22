@@ -47,18 +47,28 @@
                 <th><s:message code="shoppingCart.title"/></th>
                 <th><s:message code="shoppingCart.quantity"/></th>
             </tr>
-            <c:forEach items="${cart.shoppingCartItems}" var="items">
+            <c:forEach items="${cart.shoppingCartItems}" var="book">
                 <tr>
                     <td>
-                        <a href="<c:url value="/book/${items.bookid}" />">
-                            <c:out value="${items.bookTitle}"/>
+                        <a href="<c:url value="/book/${book.bookid}" />">
+                            <c:out value="${book.bookTitle}"/>
                         </a>
                     </td>
-                    <td><c:out value="${items.quantity}" /></td>
+                    <td><c:out value="${book.quantity}" /></td>
+                    <td>
+                        <form method="POST">
+                            <input type="hidden" name="bookid" value="<c:out value="${book.bookid}" />">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+                            <button class="btn_link" type="submit" value="update_cart" >
+                                <s:message code="shoppingCart.add"/>
+                            </button>
+                        </form>
+                    </td>
+                    <td><s:message code="shoppingCart.remove"/></td>
                 </tr>
             </c:forEach>
         </table>
     </div>
-
 </body>
 </html>

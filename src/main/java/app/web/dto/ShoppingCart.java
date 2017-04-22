@@ -7,6 +7,7 @@ import java.util.List;
  * Created by Gabriel on 11.04.2017.
  */
 public class ShoppingCart {
+
     private List<ShoppingCartItem> shoppingCartItems;
 
     public ShoppingCart() {

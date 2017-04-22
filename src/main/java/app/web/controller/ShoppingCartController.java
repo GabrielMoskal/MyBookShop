@@ -5,9 +5,10 @@ import app.web.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -35,11 +36,22 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(method = POST)
-    public String updateCart(@ModelAttribute(value = "bookid") int bookid,
-                             @ModelAttribute(value = "quantity") int quantity,
+    public String updateCart(@RequestParam(value = "bookid") int bookid,
+                             @RequestParam(value = "quantity") int quantity,
+                             HttpServletRequest request,
                              Principal principal) {
         String username = principal.getName();
         shoppingCartService.addIntoCart(username, bookid, quantity);
-        return "redirect:/book/" + bookid;
+        return redirectToPreviousPage(request);
+    }
+
+    private String redirectToPreviousPage(HttpServletRequest request) {
+        String referer = request.getHeader("Referer");
+        if (referer == null) {
+            return "/";
+        }
+        else {
+            return "redirect:" + referer;
+        }
     }
 }

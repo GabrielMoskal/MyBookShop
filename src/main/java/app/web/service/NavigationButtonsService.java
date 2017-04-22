@@ -18,6 +18,11 @@ public class NavigationButtonsService {
     private int numberOfPages;
     private int currentPageIndex;
 
+    NavigationButtonsService() {
+        this.categoryUrl = "noCategoryChosen";
+        this.numberOfPages = 0;
+        this.currentPageIndex = 0;
+    }
 
     public Set<NavigationButton> makeNavigationButtons(String categoryUrl, int numberOfPages, int currentPageIndex) {
         this.categoryUrl = categoryUrl;
