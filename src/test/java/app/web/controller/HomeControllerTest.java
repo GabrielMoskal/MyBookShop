@@ -1,4 +1,4 @@
-package app.web;
+package app.web.controller;
 
 import app.web.controller.HomeController;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class HomeControllerTest {
     @Test
     public void testHomePage() throws Exception {
         /*
-        HomeController controller = new HomeController(null);
+        HomeController controller = new HomeController(null, null);
         MockMvc mockMvc = standaloneSetup(controller).build();
         mockMvc.perform(get("/")).andExpect(view().name("home"));
         mockMvc.perform(get("/home/")).andExpect(view().name("home"));

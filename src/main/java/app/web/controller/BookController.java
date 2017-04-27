@@ -2,6 +2,7 @@ package app.web.controller;
 
 import app.data.BooksRepository;
 import app.web.dto.Book;
+import app.web.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping("/book")
 public class BookController {
 
-    private BooksRepository booksRepository;
+    private BooksService booksService;
 
     @Autowired
-    public BookController(BooksRepository booksRepository) {
-        this.booksRepository = booksRepository;
+    public BookController(BooksService booksService) {
+        this.booksService = booksService;
     }
 
     @RequestMapping(method = GET)
@@ -35,7 +36,7 @@ public class BookController {
     @RequestMapping(value = "/{bookIndex}", method = GET)
     public String showBook(@PathVariable int bookIndex,
                            Model model) {
-        Book book = booksRepository.retrieveBook(bookIndex);
+        Book book = booksService.retrieveBook(bookIndex);
         model.addAttribute("book", book);
         return "book";
     }

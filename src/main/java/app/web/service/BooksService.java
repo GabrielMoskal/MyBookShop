@@ -20,6 +20,10 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
+    public Book retrieveBook(int bookId) {
+        return booksRepository.retrieveBook(bookId);
+    }
+
     public List<Book> retrieveBooks(String categoryName, int booksLimit, int offset) {
         return booksRepository.retrieveBooks(categoryName, booksLimit, offset);
     }
