@@ -1,27 +1,31 @@
 package app.web.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 /**
  * Created by Gabriel on 04.04.2017.
  */
+@Getter
+@EqualsAndHashCode
+@ToString
 public class Book {
-    private Long index;
-    private String title;
-    private String author;
-    private String translator;
-    private String publisher;
-    private Integer year;
-    private String language;
-    private Integer pages;
-    private String format;
-    private String devices;
-    private String printing;
-    private String copying;
-    private String description;
-    private String category;
-    private String imgUrl;
-
-    private Book() {
-    }
+    private final Long index;
+    private final String title;
+    private final String author;
+    private final String translator;
+    private final String publisher;
+    private final Integer year;
+    private final String language;
+    private final Integer pages;
+    private final String format;
+    private final String devices;
+    private final String printing;
+    private final String copying;
+    private final String description;
+    private final String category;
+    private final String imgUrl;
 
     private Book(Builder builder) {
         this.index = builder.index;
@@ -39,168 +43,6 @@ public class Book {
         this.description = builder.description;
         this.category = builder.category;
         this.imgUrl = builder.imgUrl;
-    }
-
-    public Long getIndex() {
-        return index;
-    }
-
-    public void setIndex(Long index) {
-        this.index = index;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getTranslator() {
-        return translator;
-    }
-
-    public void setTranslator(String translator) {
-        this.translator = translator;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public Integer getPages() {
-        return pages;
-    }
-
-    public void setPages(Integer pages) {
-        this.pages = pages;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
-    public String getDevices() {
-        return devices;
-    }
-
-    public void setDevices(String devices) {
-        this.devices = devices;
-    }
-
-    public String getPrinting() {
-        return printing;
-    }
-
-    public void setPrinting(String printing) {
-        this.printing = printing;
-    }
-
-    public String getCopying() {
-        return copying;
-    }
-
-    public void setCopying(String copying) {
-        this.copying = copying;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        if (author != null ? !author.equals(book.author) : book.author != null) return false;
-        if (translator != null ? !translator.equals(book.translator) : book.translator != null) return false;
-        if (publisher != null ? !publisher.equals(book.publisher) : book.publisher != null) return false;
-        if (year != null ? !year.equals(book.year) : book.year != null) return false;
-        if (language != null ? !language.equals(book.language) : book.language != null) return false;
-        if (pages != null ? !pages.equals(book.pages) : book.pages != null) return false;
-        if (format != null ? !format.equals(book.format) : book.format != null) return false;
-        if (devices != null ? !devices.equals(book.devices) : book.devices != null) return false;
-        if (printing != null ? !printing.equals(book.printing) : book.printing != null) return false;
-        if (copying != null ? !copying.equals(book.copying) : book.copying != null) return false;
-        if (description != null ? !description.equals(book.description) : book.description != null) return false;
-        if (category != null ? !category.equals(book.category) : book.category != null) return false;
-        return imgUrl != null ? imgUrl.equals(book.imgUrl) : book.imgUrl == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = title != null ? title.hashCode() : 0;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        result = 31 * result + (translator != null ? translator.hashCode() : 0);
-        result = 31 * result + (publisher != null ? publisher.hashCode() : 0);
-        result = 31 * result + (year != null ? year.hashCode() : 0);
-        result = 31 * result + (language != null ? language.hashCode() : 0);
-        result = 31 * result + (pages != null ? pages.hashCode() : 0);
-        result = 31 * result + (format != null ? format.hashCode() : 0);
-        result = 31 * result + (devices != null ? devices.hashCode() : 0);
-        result = 31 * result + (printing != null ? printing.hashCode() : 0);
-        result = 31 * result + (copying != null ? copying.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
-        return result;
     }
 
     public static class Builder {
