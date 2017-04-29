@@ -32,6 +32,9 @@ public class ShoppingCartService {
         ShoppingCart shoppingCart = new ShoppingCart();
 
         for (Map<String, Object> categoryToColumn : categoriesToColumns) {
+            // TODO
+            // 1. Can refactor this (make another method and make Lambda injections?
+            // 2. Can reduce this class? not to generate names here, generate in views?
             Integer bookid = (Integer)categoryToColumn.get("bookid");
             Integer quantity = (Integer)categoryToColumn.get("quantity");
             Book book = booksRepository.retrieveBook(bookid);

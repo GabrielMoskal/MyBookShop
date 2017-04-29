@@ -12,6 +12,7 @@ import java.util.TreeSet;
 @Service
 public class NavigationButtonsService {
 
+    // TODO make variable number of buttons
     private static final int NUM_OF_MIDDLE_BUTTONS = 3;
 
     private String categoryUrl;

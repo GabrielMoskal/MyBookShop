@@ -25,11 +25,9 @@ public class CategoriesService {
     }
 
     public Map<String, String> makeBooksCategories() {
-        List<String> booksCategories = booksRepository.retrieveCategoriesNames();
         Map<String, String> result = new HashMap<>();
-        for (String bookCategory : booksCategories) {
-            result.put(makeCategoryUrl(bookCategory), bookCategory);
-        }
+        List<String> booksCategories = booksRepository.retrieveCategoriesNames();
+        booksCategories.forEach(bookCategory -> result.put(makeCategoryUrl(bookCategory), bookCategory));
         return result;
     }
 

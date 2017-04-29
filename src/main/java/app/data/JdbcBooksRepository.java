@@ -86,11 +86,9 @@ public class JdbcBooksRepository implements BooksRepository {
     }
 
     public List<String> retrieveCategoriesNames() {
+        List<String> result = new ArrayList<>();
         List<Map<String, Object>> categories = retrieveCategories();
-        List<java.lang.String> result = new ArrayList<>();
-        for (Map<String, Object> rowToValue : categories) {
-            result.add((String)rowToValue.get("category"));
-        }
+        categories.forEach(rowToValue -> result.add((String)rowToValue.get("category")));
         return result;
     }
 
