@@ -52,11 +52,7 @@ public class NavigationButtonsService {
     }
 
     private NavigationButton makeButton(int pageIndex, String name) {
-        NavigationButton button = new NavigationButton();
-        button.setCategoryUrl(categoryUrl);
-        button.setPageNumber(pageIndex);
-        button.setName(name);
-        return button;
+        return new NavigationButton(pageIndex, categoryUrl, name);
     }
 
     private NavigationButton makeLastButton() {
