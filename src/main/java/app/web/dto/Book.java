@@ -62,77 +62,77 @@ public class Book {
         private String category;
         private String imgUrl;
 
-        public Builder index(Long index) {
+        public Builder index(final Long index) {
             this.index = index;
             return this;
         }
 
-        public Builder title(String title) {
+        public Builder title(final String title) {
             this.title = title;
             return this;
         }
 
-        public Builder author(String author) {
+        public Builder author(final String author) {
             this.author = author;
             return this;
         }
 
-        public Builder translator(String translator) {
+        public Builder translator(final String translator) {
             this.translator = translator;
             return this;
         }
 
-        public Builder publisher(String publisher) {
+        public Builder publisher(final String publisher) {
             this.publisher = publisher;
             return this;
         }
 
-        public Builder year(Integer year) {
+        public Builder year(final Integer year) {
             this.year = year;
             return this;
         }
 
-        public Builder language(String language) {
+        public Builder language(final String language) {
             this.language = language;
             return this;
         }
 
-        public Builder pages(Integer pages) {
+        public Builder pages(final Integer pages) {
             this.pages = pages;
             return this;
         }
 
-        public Builder format(String format) {
+        public Builder format(final String format) {
             this.format = format;
             return this;
         }
 
-        public Builder devices(String devices) {
+        public Builder devices(final String devices) {
             this.devices = devices;
             return this;
         }
 
-        public Builder printing(String printing) {
+        public Builder printing(final String printing) {
             this.printing = printing;
             return this;
         }
 
-        public Builder copying(String copying) {
+        public Builder copying(final String copying) {
             this.copying = copying;
             return this;
         }
 
-        public Builder description(String description) {
+        public Builder description(final String description) {
             this.description = description;
             return this;
         }
 
-        public Builder category(String category) {
+        public Builder category(final String category) {
             this.category = category;
             return this;
         }
 
-        public Builder imgUrl(String imgUrl) {
+        public Builder imgUrl(final String imgUrl) {
             this.imgUrl = imgUrl;
             return this;
         }
