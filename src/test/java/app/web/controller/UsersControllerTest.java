@@ -3,6 +3,7 @@ package app.web.controller;
 import app.web.dto.User;
 import app.data.UsersRepository;
 import app.web.controller.UsersController;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -15,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Gabriel on 02.02.2017.
  */
+@Ignore
 public class UsersControllerTest {
 
     @Test
