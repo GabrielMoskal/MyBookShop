@@ -1,6 +1,7 @@
 package app.web.dto;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
+@EqualsAndHashCode(of = {"pageIndex"})
 public class NavigationButton implements Comparable<NavigationButton> {
     private int pageIndex;
     private String categoryUrl;
@@ -26,20 +28,5 @@ public class NavigationButton implements Comparable<NavigationButton> {
             throw new NullPointerException("Null argument in NavigationButton.compareTo function");
         }
         return Integer.compare(pageIndex, navigationButton.getPageIndex());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        NavigationButton button = (NavigationButton) o;
-
-        return pageIndex == button.pageIndex;
-    }
-
-    @Override
-    public int hashCode() {
-        return pageIndex;
     }
 }

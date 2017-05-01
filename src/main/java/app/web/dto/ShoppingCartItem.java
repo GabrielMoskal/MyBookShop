@@ -1,5 +1,6 @@
 package app.web.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -8,6 +9,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
+@EqualsAndHashCode(of = {"bookid", "bookTitle"})
 public class ShoppingCartItem {
     private int bookid;
     private String bookTitle;
@@ -17,23 +19,5 @@ public class ShoppingCartItem {
         this.bookid = bookid;
         this.bookTitle = bookTitle;
         this.quantity = quantity;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ShoppingCartItem item = (ShoppingCartItem) o;
-
-        if (bookid != item.bookid) return false;
-        return bookTitle != null ? bookTitle.equals(item.bookTitle) : item.bookTitle == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = bookid;
-        result = 31 * result + (bookTitle != null ? bookTitle.hashCode() : 0);
-        return result;
     }
 }

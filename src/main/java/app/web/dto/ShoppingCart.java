@@ -1,11 +1,16 @@
 package app.web.dto;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Gabriel on 11.04.2017.
  */
+@Getter
+@ToString
 public class ShoppingCart {
 
     private List<ShoppingCartItem> shoppingCartItems;
@@ -19,11 +24,7 @@ public class ShoppingCart {
         if (isItemAdded(item)) {
             /* if an item exists, remove it from the list and make a new object with updated quantity */
             ShoppingCartItem previouslyAddedItem = removePreviouslyAddedItem(item);
-            int id = previouslyAddedItem.getBookid();
-            String title = previouslyAddedItem.getBookTitle();
-            int quantity = previouslyAddedItem.getQuantity() + item.getQuantity();
-
-            itemToAdd = new ShoppingCartItem(id, title, quantity);
+            itemToAdd = makeNewShoppingCartItem(item, previouslyAddedItem);
         }
         shoppingCartItems.add(itemToAdd);
     }
@@ -37,7 +38,10 @@ public class ShoppingCart {
         return shoppingCartItems.remove(index);
     }
 
-    public List<ShoppingCartItem> getShoppingCartItems() {
-        return this.shoppingCartItems;
+    private ShoppingCartItem makeNewShoppingCartItem(ShoppingCartItem toAdd, ShoppingCartItem previouslyAddedItem) {
+        int id = previouslyAddedItem.getBookid();
+        String title = previouslyAddedItem.getBookTitle();
+        int quantity = previouslyAddedItem.getQuantity() + toAdd.getQuantity();
+        return new ShoppingCartItem(id, title, quantity);
     }
 }

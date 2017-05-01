@@ -99,6 +99,11 @@
       <version>1.16.16</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-testlib</artifactId>
+      <version>12.0-rc2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>MySpringProject</finalName>

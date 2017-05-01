@@ -1,5 +1,6 @@
 package app.web.dto;
 
+import com.google.common.testing.EqualsTester;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,5 +37,16 @@ public class NavigationButtonTest {
     @Test(expected = NullPointerException.class)
     public void nullCompareToValueRaisesException() {
         navigationButton.compareTo(null);
+    }
+
+    @Test
+    public void equalsAndHashCode() {
+        new EqualsTester()
+                .addEqualityGroup(
+                        navigationButton,
+                        new NavigationButton(1, "category", "name"))
+                .addEqualityGroup(new NavigationButton(2, "category", "name"),
+                        new NavigationButton(2, "testWord", "testName"))
+                .testEquals();
     }
 }
