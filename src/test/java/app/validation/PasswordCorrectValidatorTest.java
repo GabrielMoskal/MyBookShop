@@ -31,7 +31,7 @@ public class PasswordCorrectValidatorTest {
     }
 
     @Test
-    public void nullValueIsInvalid() {
+    public void nullValueIsValid() {
         assertTrue(validator.isValid(null, null));
     }
 }

@@ -1,6 +1,6 @@
 package app.data;
 
-import app.web.dto.UserRegistration;
+import app.web.dto.UserRegistrationDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
@@ -38,7 +38,7 @@ public class JdbcUsersRepository implements UsersRepository {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserRegistration register(final UserRegistration user) {
+    public UserRegistrationDetails register(final UserRegistrationDetails user) {
         Group userGroup = Group.USER;
         insertIntoUsers(user.getUsername(), user.getPassword().getPassword(), true);
         insertIntoUserDetails(user.getUsername(), user.getFirstName(),
@@ -91,7 +91,7 @@ public class JdbcUsersRepository implements UsersRepository {
         jdbcOperations.update(INSERT_AUTHORITY, parameters);
     }
 
-    public UserRegistration findByUsername(final String username) {
+    public UserRegistrationDetails findByUsername(final String username) {
         final String FIND_USER = "SELECT * FROM user_details " +
                 "WHERE username = :username;";
         Map<String, Object> paramMap = new HashMap<>();
@@ -99,12 +99,12 @@ public class JdbcUsersRepository implements UsersRepository {
         return queryForUser(FIND_USER, paramMap);
     }
 
-    private UserRegistration queryForUser(final String query, final Map<String, Object> paramMap) {
+    private UserRegistrationDetails queryForUser(final String query, final Map<String, Object> paramMap) {
         return jdbcOperations.queryForObject(
                 query,
                 paramMap,
                 (resultSet, rowNum) -> {
-                    UserRegistration user = new UserRegistration();
+                    UserRegistrationDetails user = new UserRegistrationDetails();
                     user.setUsername(resultSet.getString("username"));
                     user.setFirstName(resultSet.getString("firstName"));
                     user.setLastName(resultSet.getString("lastName"));

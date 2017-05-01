@@ -29,9 +29,9 @@ public class UsersControllerTest {
     @Test
     public void testProcessRegistration() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        UserRegistration unsaved = new UserRegistration("michael1234", "testPass", "testPass",
+        UserRegistrationDetails unsaved = new UserRegistrationDetails("michael1234", "testPass", "testPass",
                 "Michael","Jordan", "michael@jordan.com");
-        UserRegistration saved = new UserRegistration("michael1234", "testPass", "testPass",
+        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", "testPass", "testPass",
                 "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.register(unsaved)).thenReturn(saved);
 
@@ -68,7 +68,7 @@ public class UsersControllerTest {
     @Test
     public void testShowUserProfile() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        UserRegistration saved = new UserRegistration("michael1234", "testPass",
+        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", "testPass",
                 "testPass", "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.findByUsername("michael1234")).thenReturn(saved);
 

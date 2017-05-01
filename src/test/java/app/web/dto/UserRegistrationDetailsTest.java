@@ -8,14 +8,14 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Gabriel on 01.05.2017.
  */
-public class UserRegistrationTest {
+public class UserRegistrationDetailsTest {
 
-    private UserRegistration user;
+    private UserRegistrationDetails user;
 
     @Before
     public void setUp() {
         Password passwordObj = new Password("password", "password");
-        user = new UserRegistration("username", passwordObj,
+        user = new UserRegistrationDetails("username", passwordObj,
                 "firstname", "lastname", "email");
     }
 
