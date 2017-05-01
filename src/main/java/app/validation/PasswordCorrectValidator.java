@@ -1,6 +1,6 @@
 package app.validation;
 
-import app.web.dto.User;
+import app.web.dto.Password;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -8,10 +8,10 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Created by Gabriel on 02.04.2017.
  */
-public class ValidPasswordValidator implements ConstraintValidator<ValidPassword, Object> {
+public class PasswordCorrectValidator implements ConstraintValidator<PasswordCorrect, Object> {
 
     @Override
-    public void initialize(ValidPassword constraintAnnotation) {
+    public void initialize(PasswordCorrect constraintAnnotation) {
     }
 
     @Override
@@ -19,9 +19,9 @@ public class ValidPasswordValidator implements ConstraintValidator<ValidPassword
         if (object == null) {
             return true;
         }
-        User user = (User)object;
-        String password = user.getPassword();
-        String confirmedPassword = user.getConfirmedPassword();
+        Password passwordWithConfirmation = (Password) object;
+        String password = passwordWithConfirmation.getPassword();
+        String confirmedPassword = passwordWithConfirmation.getConfirmedPassword();
         return password.equals(confirmedPassword);
     }
 }

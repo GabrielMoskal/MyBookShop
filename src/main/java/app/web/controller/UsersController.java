@@ -1,6 +1,6 @@
 package app.web.controller;
 
-import app.web.dto.User;
+import app.web.dto.UserRegistration;
 import app.data.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,18 +33,18 @@ public class UsersController {
 
     @RequestMapping(value="/register", method= GET)
     public String showRegistrationForm(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        UserRegistration userRegistration = new UserRegistration();
+        model.addAttribute("userRegistration", userRegistration);
         return "registerForm";
     }
 
     @RequestMapping(value="/register", method= POST)
-    public String processRegistration(@Valid @ModelAttribute User user,
+    public String processRegistration(@Valid @ModelAttribute UserRegistration userRegistration,
                                       Errors errors) {
         if (errors.hasErrors()) {
             return "registerForm";
         }
-        userRepository.register(user);
+        userRepository.register(userRegistration);
         return "redirect:/home";
     }
 
@@ -57,8 +57,8 @@ public class UsersController {
 
     @RequestMapping(value="/{username}", method=GET)
     public String showUserProfile(@PathVariable String username, Model model) {
-        User user = userRepository.findByUsername(username);
-        model.addAttribute(user);
+        UserRegistration userRegistration = userRepository.findByUsername(username);
+        model.addAttribute(userRegistration);
         return "profile";
     }
 

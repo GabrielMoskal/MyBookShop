@@ -7,12 +7,12 @@ import java.lang.annotation.*;
 /**
  * Created by Gabriel on 02.04.2017.
  */
-@Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidPasswordValidator.class)
+@Constraint(validatedBy = PasswordCorrectValidator.class)
 @Documented
-public @interface ValidPassword {
-    String message() default "Passwords doesn't match";
+public @interface PasswordCorrect {
+    String message() default "Password and confirmed password don't match";
 
     Class<?>[] groups() default {};
 

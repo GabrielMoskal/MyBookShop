@@ -23,7 +23,7 @@
 <myTag:horizontalMenu />
 
     <h2><s:message code="registration.title" /></h2>
-    <sf:form method="POST" modelAttribute="user" acceptCharset="UTF-8">
+    <sf:form method="POST" modelAttribute="userRegistration" acceptCharset="UTF-8">
         <table>
             <tr>
                 <td><s:message code="registration.username" /></td>
@@ -32,12 +32,13 @@
             </tr>
             <tr>
                 <td><s:message code="registration.password" /></td>
-                <td><sf:password path="password" /></td>
-                <td><sf:errors path="password" /><sf:errors cssClass="user" /></td>
+                <td><sf:password path="password.password" /></td>
+                <td><sf:errors path="password.password" />
+                    <sf:errors cssClass="user" /></td>
             </tr>
             <tr>
                 <td><s:message code="registration.confirmedPassword" /></td>
-                <td><sf:password path="confirmedPassword" /></td>
+                <td><sf:password path="password.confirmedPassword" /></td>
             </tr>
             <tr>
                 <td><s:message code="registration.firstName" /></td>
