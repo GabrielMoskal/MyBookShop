@@ -31,12 +31,18 @@ public class HomeController {
 
     @RequestMapping(method = GET)
     public String home(Model model) {
+        addBookCategories(model);
+        addNewBooks(model);
+        return "home";
+    }
+
+    private void addBookCategories(Model model) {
         Map<String, String> categories = categoriesService.makeBooksCategories();
         model.addAttribute("categories", categories);
+    }
 
+    private void addNewBooks(Model model) {
         List<Book> books = booksService.retrieveNewBooks(25, 0);
         model.addAttribute("books", books);
-
-        return "home";
     }
 }

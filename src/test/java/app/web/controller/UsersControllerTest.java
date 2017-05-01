@@ -1,13 +1,15 @@
 package app.web.controller;
 
 import app.data.UsersRepository;
+import app.web.dto.Password;
+import app.web.dto.UserRegistrationDetails;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -15,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @Ignore
 public class UsersControllerTest {
-
+    /*
     @Test
     public void testRegisterForm() throws Exception {
         UsersRepository userRepository = mock(UsersRepository.class);
@@ -25,13 +27,14 @@ public class UsersControllerTest {
                 .andExpect(view().name("registerForm"));
     }
 
-    /*
+
     @Test
     public void testProcessRegistration() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        UserRegistrationDetails unsaved = new UserRegistrationDetails("michael1234", "testPass", "testPass",
+        Password password = new Password("testPass", "testPass");
+        UserRegistrationDetails unsaved = new UserRegistrationDetails("michael1234", password,
                 "Michael","Jordan", "michael@jordan.com");
-        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", "testPass", "testPass",
+        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", password,
                 "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.register(unsaved)).thenReturn(saved);
 
@@ -51,7 +54,7 @@ public class UsersControllerTest {
     // TODO
     @Test
     public void shouldFailValidationWithNoData() throws Exception {
-        /*
+
         UsersRepository usersRepository = mock(UsersRepository.class);
         UsersController controller = new UsersController(usersRepository);
         MockMvc mockMvc = standaloneSetup(controller).build();
@@ -68,8 +71,9 @@ public class UsersControllerTest {
     @Test
     public void testShowUserProfile() throws Exception {
         UsersRepository usersRepository = mock(UsersRepository.class);
-        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", "testPass",
-                "testPass", "Michael","Jordan", "michael@jordan.com");
+        Password password = new Password("testPass", "testPass");
+        UserRegistrationDetails saved = new UserRegistrationDetails("michael1234", password,
+                "Michael","Jordan", "michael@jordan.com");
         when(usersRepository.findByUsername("michael1234")).thenReturn(saved);
 
         UsersController usersController = new UsersController(usersRepository);
