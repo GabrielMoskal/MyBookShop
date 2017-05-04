@@ -50,6 +50,7 @@ public class UsersController {
 
     @RequestMapping(value = "/profile", method = GET)
     public String showProfile(Principal principal, Model model) {
+
         String username = principal.getName();
         model.addAttribute("username", username);
         return "redirect:/users/{username}";
@@ -58,7 +59,7 @@ public class UsersController {
     @RequestMapping(value="/{username}", method=GET)
     public String showUserProfile(@PathVariable String username, Model model) {
         UserRegistrationDetails details = userRepository.findByUsername(username);
-        model.addAttribute(details);
+        model.addAttribute("details", details);
         return "profile";
     }
 

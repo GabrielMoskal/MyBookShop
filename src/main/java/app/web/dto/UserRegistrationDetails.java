@@ -24,7 +24,8 @@ public class UserRegistrationDetails extends UserDetails {
     private Password password;
 
     public UserRegistrationDetails() {
-        this("no username", new Password(),"no firstname", "no lastname", "no email");
+        //this("", new Password(),"", "", "");
+        this(null, null, null, null, null);
     }
 
     public UserRegistrationDetails(String username, Password password, String firstName, String lastName, String email) {

@@ -17,7 +17,7 @@ public class Password implements CharSequence {
     private String confirmedPassword;
 
     public Password() {
-        this("no password", "no confirmed password");
+        this("", "");
     }
 
     public Password(String password, String confirmedPassword) {
