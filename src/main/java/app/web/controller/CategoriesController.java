@@ -42,29 +42,48 @@ public class CategoriesController {
     public String categoryRedirect(@RequestParam String categoryUrl,
                                    @RequestParam String categoryName,
                                    Model model) {
-        model.addAttribute("categoryUrl", categoryUrl);
-        model.addAttribute("categoryName", categoryName);
+        addCategoryUrlIntoModel(model, categoryUrl);
+        addCategoryNameIntoModel(model, categoryName);
         return "redirect:/category/{categoryUrl}";
+    }
+
+    private void addCategoryUrlIntoModel(Model model, String categoryUrl) {
+        model.addAttribute("categoryUrl", categoryUrl);
+    }
+
+    private void addCategoryNameIntoModel(Model model, String categoryName) {
+        model.addAttribute("categoryName", categoryName);
     }
 
     @RequestMapping(value = "/{categoryUrl}", method = GET)
     public String showCategory(@PathVariable String categoryUrl,
                                @RequestParam String categoryName,
                                @RequestParam(value = "booksLimit", defaultValue = "25") int booksLimit,
-                               @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                               @RequestParam(value = "pageIndex", defaultValue = "0") int pageIndex,
                                Model model) {
-        int offset = booksLimit * pageNumber;
-        List<Book> books = booksService.retrieveBooks(categoryName, booksLimit, offset);
-        model.addAttribute("books", books);
 
-        Map<String, String> booksCategories = categoriesService.makeBooksCategories();
-        model.addAttribute("categories", booksCategories);
-
-        model.addAttribute("categoryName", categoryName);
-
-        int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
-        Set<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageNumber);
-        model.addAttribute("navigationButtons", navigationButtons);
+        addBooksIntoModel(model, categoryName, booksLimit, pageIndex);
+        addCategoriesIntoModel(model);
+        addCategoryNameIntoModel(model, categoryName);
+        addNavigationButtonsIntoModel(model, categoryUrl, categoryName, booksLimit, pageIndex);
         return "category";
     }
+
+    private void addBooksIntoModel(Model model, String categoryName, int booksLimit, int pageIndex) {
+        int offset = booksLimit * pageIndex;
+        List<Book> books = booksService.retrieveBooks(categoryName, booksLimit, offset);
+        model.addAttribute("books", books);
+    }
+
+    private void addCategoriesIntoModel(Model model) {
+        Map<String, String> booksCategories = categoriesService.makeBooksCategories();
+        model.addAttribute("categories", booksCategories);
+    }
+
+    private void addNavigationButtonsIntoModel(Model model, String categoryUrl, String categoryName, int booksLimit, int pageIndex) {
+        int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
+        Set<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageIndex);
+        model.addAttribute("navigationButtons", navigationButtons);
+    }
 }
+

@@ -37,7 +37,6 @@ public class NavigationButtonsService {
         NavigationButton firstButton = makeFirstButton();
         NavigationButton lastButton = makeLastButton();
         Set<NavigationButton> middleButtons = makeMiddleButtons();
-
         Set<NavigationButton> buttons = new TreeSet<>();
         buttons.add(firstButton);
         buttons.add(lastButton);

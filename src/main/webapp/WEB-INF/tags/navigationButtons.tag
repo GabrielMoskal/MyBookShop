@@ -28,7 +28,7 @@
         <li>
             <form method="GET" action="<c:out value="${categoryUrl}" />" >
                 <input type="hidden" name="booksLimit" value="25">
-                <input type="hidden" name="pageNumber" value="<c:out value="${navigationButton.pageNumber}" />" >
+                <input type="hidden" name="pageIndex" value="<c:out value="${navigationButton.pageIndex}" />" >
                 <input type="hidden" name="categoryName" value="<c:out value="${categoryName}" />" >
                 <input type="hidden" name="categoryUrl" value="<c:out value="${categoryUrl}"/>" >
                 <button type="submit" class="navigation-button"><c:out value="${navigationButton.name}" /></button>

@@ -33,8 +33,7 @@ public class UsersController {
 
     @RequestMapping(value="/register", method= GET)
     public String showRegistrationForm(Model model) {
-        UserRegistrationDetails details = new UserRegistrationDetails();
-        model.addAttribute("details", details);
+        model.addAttribute("details", new UserRegistrationDetails());
         return "registerForm";
     }
 
@@ -50,7 +49,6 @@ public class UsersController {
 
     @RequestMapping(value = "/profile", method = GET)
     public String showProfile(Principal principal, Model model) {
-
         String username = principal.getName();
         model.addAttribute("username", username);
         return "redirect:/users/{username}";
