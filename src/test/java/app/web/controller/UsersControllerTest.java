@@ -9,6 +9,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import java.security.Principal;
+
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -74,6 +76,17 @@ public class UsersControllerTest {
                 .andExpect(model().errorCount(5))
                 .andExpect(model().attributeHasFieldErrors(
                         "details", "username", "password", "firstName", "lastName", "email"));
+    }
+
+    @Test
+    public void showProfile() throws Exception {
+        Principal principal = mock(Principal.class);
+        String exampleName = "exampleName";
+        when(principal.getName()).thenReturn(exampleName);
+        mockMvc.perform(get("/users/profile")
+                .principal(principal))
+                .andExpect(model().attribute("username", exampleName))
+                .andExpect(redirectedUrl("/users/exampleName"));
     }
 
     @Test
