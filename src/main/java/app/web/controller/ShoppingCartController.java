@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.Optional;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -42,16 +43,12 @@ public class ShoppingCartController {
                              Principal principal) {
         String username = principal.getName();
         shoppingCartService.insertIntoCart(username, bookid, quantity);
-        return redirectToPreviousPage(request);
+        return redirectToPreviousPage(request).orElse("/");
     }
 
-    private String redirectToPreviousPage(HttpServletRequest request) {
+    private Optional<String> redirectToPreviousPage(HttpServletRequest request) {
         String referer = request.getHeader("Referer");
-        if (referer == null) {
-            return "/";
-        }
-        else {
-            return "redirect:" + referer;
-        }
+        return Optional.ofNullable(referer)
+                .map((redirectUrl) -> redirectUrl = "redirect:" + redirectUrl);
     }
 }
