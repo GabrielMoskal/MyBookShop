@@ -24,7 +24,6 @@ public class UserRegistrationDetails extends UserDetails {
     private Password password;
 
     public UserRegistrationDetails() {
-        //this("", new Password(),"", "", "");
         this(null, null, null, null, null);
     }
 

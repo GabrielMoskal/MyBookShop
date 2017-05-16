@@ -81,9 +81,15 @@ public class CategoriesController {
     }
 
     private void addNavigationButtonsIntoModel(Model model, String categoryUrl, String categoryName, int booksLimit, int pageIndex) {
-        int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
-        Set<NavigationButton> navigationButtons = navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageIndex);
+        Set<NavigationButton> navigationButtons = makeNavigationButtons(categoryUrl, categoryName, booksLimit, pageIndex);
+        navigationButtonsService.validateNavigationButtons(navigationButtons);
         model.addAttribute("navigationButtons", navigationButtons);
+    }
+
+    private Set<NavigationButton> makeNavigationButtons(String categoryUrl, String categoryName, int booksLimit, int pageIndex) {
+        int numOfPages = booksService.findNumberOfPagesByCategory(categoryName, booksLimit);
+        navigationButtonsService.setNumberOfMiddleButtons(3);
+        return navigationButtonsService.makeNavigationButtons(categoryUrl, numOfPages, pageIndex);
     }
 }
 

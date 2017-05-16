@@ -2,7 +2,7 @@ package app.web.controller;
 
 import app.web.service.BooksService;
 import app.web.service.CategoriesService;
-import app.web.service.NavigationButtonsService;
+import app.web.service.NavigationButtonsServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,7 +22,7 @@ public class CategoriesControllerTest {
     @Before
     public void setUp() {
         CategoriesService categoriesService = mock(CategoriesService.class);
-        NavigationButtonsService buttonsService = mock(NavigationButtonsService.class);
+        NavigationButtonsServiceImpl buttonsService = mock(NavigationButtonsServiceImpl.class);
         BooksService booksService = mock(BooksService.class);
         CategoriesController categoriesController =
                 new CategoriesController(categoriesService, buttonsService, booksService);

@@ -28,7 +28,7 @@ public class UserDetails {
     @Size(min=2, max=30, message = "{lastName.size}")
     private String lastName;
     @NotNull
-    @Size(min = 5, message = "{email.valid}")   // TODO should i change info about length, or what to do with code repeat?
+    @Size(min = 5, message = "{email.valid}")
     @Email(message = "{email.valid}")
     private String email;
 

@@ -5,15 +5,21 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Gabriel on 08.04.2017.
  */
 @Getter
 @ToString
-@EqualsAndHashCode(of = {"pageIndex"})
+@EqualsAndHashCode
 public class NavigationButton implements Comparable<NavigationButton> {
+    @Min(0)
     private int pageIndex;
+    @NotNull
     private String categoryUrl;
+    @NotNull
     private String name;
 
     public NavigationButton(int pageIndex, final String categoryUrl, final String name) {
@@ -23,10 +29,7 @@ public class NavigationButton implements Comparable<NavigationButton> {
     }
 
     @Override
-    public int compareTo(final NavigationButton navigationButton) {
-        if (navigationButton == null) {
-            throw new NullPointerException("Null argument in NavigationButton.compareTo function");
-        }
+    public int compareTo(@org.jetbrains.annotations.NotNull NavigationButton navigationButton) {
         return Integer.compare(pageIndex, navigationButton.getPageIndex());
     }
 }
