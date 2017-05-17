@@ -2,16 +2,15 @@ package app.web.controller;
 
 import app.web.service.BooksService;
 import app.web.service.CategoriesServiceImpl;
-import app.web.service.NavigationButtonsServiceImpl;
+import app.web.service.NavigationButtonsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.mock;
-
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 /**
  * Created by Gabriel on 04.05.2017.
@@ -22,7 +21,7 @@ public class CategoriesControllerTest {
     @Before
     public void setUp() {
         CategoriesServiceImpl categoriesService = mock(CategoriesServiceImpl.class);
-        NavigationButtonsServiceImpl buttonsService = mock(NavigationButtonsServiceImpl.class);
+        NavigationButtonsService buttonsService = mock(NavigationButtonsService.class);
         BooksService booksService = mock(BooksService.class);
         CategoriesController categoriesController =
                 new CategoriesController(categoriesService, buttonsService, booksService);

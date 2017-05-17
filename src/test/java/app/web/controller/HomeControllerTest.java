@@ -1,14 +1,14 @@
 package app.web.controller;
 
 import app.web.service.BooksService;
-import app.web.service.CategoriesServiceImpl;
+import app.web.service.CategoriesService;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.Mockito.mock;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 /**
  * Created by Gabriel on 02.02.2017.
@@ -17,7 +17,7 @@ public class HomeControllerTest {
 
     @Test
     public void testHomePage() throws Exception {
-        CategoriesServiceImpl categoriesService = mock(CategoriesServiceImpl.class);
+        CategoriesService categoriesService = mock(CategoriesService.class);
         BooksService booksService = mock(BooksService.class);
         HomeController controller = new HomeController(categoriesService, booksService);
         MockMvc mockMvc = standaloneSetup(controller).build();
