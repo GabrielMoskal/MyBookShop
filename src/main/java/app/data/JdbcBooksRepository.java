@@ -26,7 +26,7 @@ public class JdbcBooksRepository implements BooksRepository {
         this.jdbcOperations = jdbcOperations;
     }
 
-    public Book retrieveBook(int index) {
+    public Book retrieveBook(long index) {
         final String SELECT_BY_ID = "SELECT * FROM books " +
                 "NATURAL JOIN books_categories " +
                 "WHERE bookid = :index";

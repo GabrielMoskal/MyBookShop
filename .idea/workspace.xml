@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9d665aa-6d8e-4bae-9a90-3bcb89403f78" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/web/service/BooksServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/app/web/service/BooksServiceImplTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java" afterPath="$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java" afterPath="$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java" afterPath="$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -141,11 +146,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CategoriesServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/CategoriesServiceImpl.java">
+      <file leaf-file-name="BooksServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/BooksServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+            <state relative-caret-position="422">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1526#1527#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BooksRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,46 +172,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java">
+      <file leaf-file-name="JdbcBooksRepository.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoriesControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+            <state relative-caret-position="214">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1495042081260" expanded="true" signature="884:997" ph="SELECT * FRO... books" />
+                <marker date="1495042081260" expanded="true" signature="2220:2498" ph="SELECT * FRO... books" />
+                <marker date="1495042081260" expanded="true" signature="2900:3121" ph="SELECT * FRO... books" />
+                <marker date="1495042081260" expanded="true" signature="3757:3781" ph="SELECT * FRO... categories" />
+                <marker date="1495042081260" expanded="true" signature="3984:4135" ph="SELECT COUNT... books" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java">
+      <file leaf-file-name="BooksServiceImplTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/BooksServiceImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="1716">
+              <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#makeBook#0;class#BooksServiceImplTest#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShoppingCartControllerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/ShoppingCartControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -207,31 +212,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShoppingCartController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/ShoppingCartController.java">
+      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/dto/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="59" />
+            <state relative-caret-position="220">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/UsersController.java">
+      <file leaf-file-name="BookControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            <state relative-caret-position="132">
+              <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoriesServiceImplTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/CategoriesServiceImplTest.java">
+      <file leaf-file-name="CategoriesControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+            <state relative-caret-position="418">
+              <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -239,11 +244,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavigationButtonsServiceImplTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/NavigationButtonsServiceImplTest.java">
+      <file leaf-file-name="HomeControllerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="440">
+              <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BooksService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -395,11 +412,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/app/web/dto/BookTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/app/web/dto/ShoppingCartTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/web/dto/PasswordWithConfirmation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/validation/ValidPasswordValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/validation/ValidPassword.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/validation/ValidPasswordValidatiorTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/validation/ValidPasswordValidatorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/web/dto/User.java" />
@@ -422,7 +434,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/navigationButtons.tag" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/books.tag" />
         <option value="$PROJECT_DIR$/src/test/java/app/web/controller/UsersControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/web/dto/Book.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/web/controller/BookController.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/web/controller/ShoppingCartControllerTest.java" />
@@ -445,6 +456,12 @@
         <option value="$PROJECT_DIR$/src/main/java/app/web/service/CategoriesServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/web/service/CategoriesServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/app/web/service/BooksServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/app/web/service/BooksServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java" />
       </list>
     </option>
@@ -712,6 +729,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dto" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1562,7 +1583,7 @@
       <workItem from="1494886399734" duration="610000" />
       <workItem from="1494956471499" duration="6000" />
       <workItem from="1494959158471" duration="4681000" />
-      <workItem from="1495038277165" duration="3169000" />
+      <workItem from="1495038277165" duration="6049000" />
     </task>
     <task id="LOCAL-00001" summary="Added simple homepage with test">
       <created>1486056578605</created>
@@ -1652,39 +1673,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 28m 39s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 18h 53m 16s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 37m 59s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 18h 53m 32s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 38m 07s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 18h 55m 16s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 38m 13s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 01m 32s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 41m 43s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 01m 41s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 46m 56s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 02m 03s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 53m 27s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 02m 35s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 17h 56m 46s.xml">
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 03m 08s.xml">
       <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(5) - 2017.05.12 at 18h 51m 14s.xml">
-      <configuration name="All in MySpringProject (5)" configurationId="JUnit" />
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 03m 40s.xml">
+      <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_MySpringProject_(5) - 2017.05.15 at 22h 15m 37s.xml">
-      <configuration name="All in MySpringProject (5)" configurationId="JUnit" />
+    <history-entry file="All_in_MySpringProject_(1) - 2017.05.17 at 19h 04m 15s.xml">
+      <configuration name="All in MySpringProject (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409487000" />
+    <option name="totallyTimeSpent" value="412367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1771,31 +1792,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1958">
-          <caret line="100" column="56" lean-forward="true" selection-start-line="100" selection-start-column="56" selection-end-line="100" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/JdbcUsersRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="101" column="48" lean-forward="false" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages_pl_PL.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-720">
@@ -1805,14 +1801,6 @@
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/dto/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2350">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/web/dto/NavigationButton.java">
@@ -1876,13 +1864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -2008,14 +1989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/dto/NavigationButtonTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-766">
@@ -2029,14 +2002,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/dto/PasswordTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-242">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/dto/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
@@ -2084,6 +2049,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/ShoppingCartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/UsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/CategoriesServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/ShoppingCartControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/CategoriesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/BookController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -2094,7 +2105,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/CategoriesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
+        <state relative-caret-position="629">
           <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2112,25 +2123,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/ShoppingCartController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/dto/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/controller/UsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="154">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="32" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/NavigationButtonsServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="519">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2138,13 +2141,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/CategoriesServiceImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/dto/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="28" column="67" lean-forward="true" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2156,28 +2157,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/CategoriesServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/BooksService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+        <state relative-caret-position="374">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/web/service/BooksServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/BookControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="132">
+          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/CategoriesControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="32" column="53" lean-forward="false" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        <state relative-caret-position="418">
+          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2186,19 +2199,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/HomeControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        <state relative-caret-position="440">
+          <caret line="20" column="53" lean-forward="false" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/controller/ShoppingCartControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/app/web/service/BooksServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="1716">
+          <caret line="96" column="1" lean-forward="true" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#makeBook#0;class#BooksServiceImplTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/BooksRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/data/JdbcBooksRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1495042081260" expanded="true" signature="884:997" ph="SELECT * FRO... books" />
+            <marker date="1495042081260" expanded="true" signature="2220:2498" ph="SELECT * FRO... books" />
+            <marker date="1495042081260" expanded="true" signature="2900:3121" ph="SELECT * FRO... books" />
+            <marker date="1495042081260" expanded="true" signature="3757:3781" ph="SELECT * FRO... categories" />
+            <marker date="1495042081260" expanded="true" signature="3984:4135" ph="SELECT COUNT... books" />
+          </folding>
         </state>
       </provider>
     </entry>
