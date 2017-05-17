@@ -1,7 +1,7 @@
 package app.web.controller;
 
 import app.web.service.BooksService;
-import app.web.service.CategoriesService;
+import app.web.service.CategoriesServiceImpl;
 import app.web.service.NavigationButtonsServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class CategoriesControllerTest {
 
     @Before
     public void setUp() {
-        CategoriesService categoriesService = mock(CategoriesService.class);
+        CategoriesServiceImpl categoriesService = mock(CategoriesServiceImpl.class);
         NavigationButtonsServiceImpl buttonsService = mock(NavigationButtonsServiceImpl.class);
         BooksService booksService = mock(BooksService.class);
         CategoriesController categoriesController =

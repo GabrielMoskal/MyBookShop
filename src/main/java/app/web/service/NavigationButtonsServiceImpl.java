@@ -99,6 +99,7 @@ public class NavigationButtonsServiceImpl implements NavigationButtonsService {
         Validator validator = factory.getValidator();
         navigationButtons.forEach((button) -> {
             if (validator.validate(button).size() > 0) {
+                // TODO throw custom exception
                 throw new InvalidStateException("NavigationButtons have invalid state");
             }
         });
