@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
-import sun.plugin.dom.exception.InvalidStateException;
 
 import javax.validation.Validation;
+import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
@@ -94,13 +94,12 @@ public class NavigationButtonsServiceImpl implements NavigationButtonsService {
         return result;
     }
 
-    public void validateNavigationButtons(Set<NavigationButton> navigationButtons) throws InvalidStateException {
+    public void validateNavigationButtons(Set<NavigationButton> navigationButtons) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         navigationButtons.forEach((button) -> {
             if (validator.validate(button).size() > 0) {
-                // TODO throw custom exception
-                throw new InvalidStateException("NavigationButtons have invalid state");
+                throw new ValidationException("NavigationButtons have invalid state");
             }
         });
     }

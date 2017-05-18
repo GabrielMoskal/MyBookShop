@@ -29,7 +29,7 @@ public class NavigationButton implements Comparable<NavigationButton> {
     }
 
     @Override
-    public int compareTo(@org.jetbrains.annotations.NotNull NavigationButton navigationButton) {
+    public int compareTo(@javax.annotation.Nonnull NavigationButton navigationButton) {
         return Integer.compare(pageIndex, navigationButton.getPageIndex());
     }
 }

@@ -3,8 +3,8 @@ package app.web.service;
 import app.web.dto.NavigationButton;
 import org.junit.Before;
 import org.junit.Test;
-import sun.plugin.dom.exception.InvalidStateException;
 
+import javax.validation.ValidationException;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -45,7 +45,7 @@ public class NavigationButtonsServiceImplTest {
         expected.add(new NavigationButton(pageIndex, "categoryUrl", name));
     }
 
-    @Test(expected = InvalidStateException.class)
+    @Test(expected = ValidationException.class)
     public void validateNavigationButtonsThrowsException() {
         Set<NavigationButton> result = service.makeNavigationButtons("categoryUrl", -123, 5);
         service.validateNavigationButtons(result);

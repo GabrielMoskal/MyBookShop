@@ -48,11 +48,6 @@ public class NavigationButtonTest {
         return new NavigationButton(pageIndex, "www.othertesturl.com", "other name");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nullCompareToValueRaisesException() {
-        navigationButton.compareTo(null);
-    }
-
     @Test
     public void equalsAndHashCode() {
         new EqualsTester()
