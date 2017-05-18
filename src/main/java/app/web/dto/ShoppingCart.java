@@ -1,5 +1,6 @@
 package app.web.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Getter
 @ToString
+@EqualsAndHashCode
 public class ShoppingCart {
 
     private List<ShoppingCartItem> shoppingCartItems;

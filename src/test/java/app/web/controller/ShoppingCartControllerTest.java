@@ -2,6 +2,7 @@ package app.web.controller;
 
 import app.web.dto.ShoppingCart;
 import app.web.service.ShoppingCartService;
+import app.web.service.ShoppingCartServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -31,7 +32,7 @@ public class ShoppingCartControllerTest {
         principal = mock(Principal.class);
         when(principal.getName()).thenReturn("username");
 
-        service = mock(ShoppingCartService.class);
+        service = mock(ShoppingCartServiceImpl.class);
         cart = mock(ShoppingCart.class);
 
         ShoppingCartController controller = new ShoppingCartController(service);
